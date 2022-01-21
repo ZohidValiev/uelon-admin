@@ -1,0 +1,26 @@
+
+.messageOverlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 230, 156, .5);
+}
+.message {
+    font-size: 1.6rem;
+    font-weight: 500;
+    background-color: #fff;
+    border: 2px solid #ffcd39;
+    margin-top: -5%;
+    padding: 1.5rem 1.5rem 1.5rem 6rem;
+    border-radius: 0.8rem;
+    min-width: 30rem;
+    background-image: url("/ajax-loader.gif");
+    background-position: 1.5rem center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px #000;
+}

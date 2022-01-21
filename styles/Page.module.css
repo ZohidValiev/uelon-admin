@@ -1,0 +1,28 @@
+
+.page {
+    display: flex;
+    flex-flow: column;
+    width: 92rem;
+}
+.page__title {
+    border-top: 2px solid #ffc107;
+    margin: 0 0 3rem;
+}
+.page__titleContent {
+    background-color: #ffc107;
+    display: inline-block;
+    padding: 0.8rem 2rem 1.2rem 1rem;
+    border-radius: 0 0 .8rem 0;
+}
+.page__main {
+    display: flex;
+    flex-flow: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.page__content {
+    margin-top: 2rem;
+}
+.page__content > * {
+    margin-bottom: 2rem;
+}

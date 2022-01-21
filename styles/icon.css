@@ -1,0 +1,62 @@
+
+.icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: inline-block;
+}
+.icon_size_22 {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.icon_size_18 {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.icon_success {
+    fill: #66c963;
+}
+.icon_error {
+    fill: #d46666;
+}
+.icon-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.icon-action_pr {
+    left: auto;
+}
+.icon-action_r10 {
+    right: 1rem;
+}
+.icon-action__item {
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: .4rem;
+    border-radius: 50%;
+    background-color:#ffcd39;
+    cursor: pointer;
+}
+.icon-action__item:not(:last-child) {
+    margin-right: .5rem;
+}
+.icon-action__item:hover {
+    background-color: #66c963;
+    fill: #ffffff;
+}
+.icon-action__item_empty {
+    background-color: transparent;
+    cursor: auto;
+}
+.icon-action__item_empty:hover {
+    background-color: transparent;
+}
+
+.iconHover:hover {
+    fill: #ffc107;
+}

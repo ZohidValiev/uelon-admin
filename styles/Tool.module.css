@@ -1,0 +1,33 @@
+
+.toolbar {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.toolButton {
+    display: flex;
+    background-color: #17a2b8;
+    border-width: 0;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1.4rem;
+    padding: 1rem 1.4rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: .5s;
+}
+.toolButton:not(:last-child) {
+    margin-right: 1rem;
+}
+.toolButton__icon {
+    fill: #ffffff;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin-right: .8rem;
+    transition: .5s;
+}
+.toolButton:hover {
+    background-color: #66c963;
+}

@@ -1,0 +1,39 @@
+.alert {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 1.6rem 5.2rem 1.6rem 1.6rem;
+    position: relative;
+    color: #ffffff;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.alert_hidden {
+    display: none;
+}
+.alert_bg-default {
+    background-color: #ffe69c;
+}
+.alert_bg-success {
+    background-color: #66c963;
+}
+.alert_bg-error {
+    background-color: #d46666;
+}
+.alert__icon {
+    position: absolute;
+    right: 1.6rem;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    fill: #ffffff;
+}
+.alert_bg-default > .alert__icon:hover,
+.alert_bg-success > .alert__icon:hover {
+    fill: #d46666;
+}
+.alert_bg-error > .alert__icon:hover {
+    fill: yellow;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .categoryView {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: repeat(2, 1fr);
+            /* grid-template: repeat(1fr) / ; */
+            grid-gap: .4rem 0;
+        }
+        .categoryView__title {
+            background-color: #ffe69c;
+            padding: .8rem;
+        }
+        .categoryView__value {
+            padding: .8rem;
+            border: 1px solid #ffe69c
+        }
+    </style>
+</head>
+<body>
+    <div class="categoryView">
+        <div class="categoryView__title">#ID</div>
+        <div class="categoryView__value">1</div>
+        <div class="categoryView__title">Название Uz</div>
+        <div class="categoryView__value">value</div>
+        <div class="categoryView__title">Название Ru</div>
+        <div class="categoryView__value">value</div>
+        
+    </div>
+</body>
+</html>

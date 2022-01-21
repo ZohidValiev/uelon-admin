@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .alert {
+            display: flex;
+            flex-flow: column nowrap;
+            padding: 1.2rem 2.2rem 1.2rem 1.2rem;
+            position: relative;
+            color: #212529;
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 200px;
+        }
+        .alert_bg-default {
+            background-color: #ffe69c;
+        }
+        .alert_bg-success {
+            background-color: #66c963;
+        }
+        .alert__icon {
+            position: absolute;
+            right: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert alert_bg-success">
+        This is a success alert
+        <i class="alert__icon">x</i>
+    </div>
+</body>
+</html>

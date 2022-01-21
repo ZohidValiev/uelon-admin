@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog</title>
+    <style>
+        html {
+            font-size: 10px;
+        }
+        .dialogOverlay {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(255, 230, 156, .25);
+        }
+        .dialog {
+            background-color: #ffe69c;
+            border: 2px solid #ffcd39;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            width: 40rem;
+        }
+        .dialog__title {
+            background-color: #ffcd39;
+            height: 3.6rem;
+            font-size: 1.6rem;
+            line-height: 3.6rem;
+            padding: 0 1.4rem;
+        }
+        .dialog__content {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.6rem;
+            padding: 0 1.6rem;
+            min-height: 10rem;
+        }
+        .dialog__buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.6rem 0 0;
+            border-top: 2px solid #ffcd39;
+        }
+        .dialog__button {
+            font-weight: 500 !important;
+            height: 3rem !important;
+            line-height: 3rem !important;
+            width: 10rem;
+            color: #fff !important;
+            background-color: #6c757d !important;
+            border-radius: 4px !important;
+        }
+        .dialog__button:hover {
+            background-color: #ffc107 !important;
+            cursor: pointer;
+            color: #212529;
+        }
+        .dialog__button:not(:last-child) {
+            margin-right: 1rem;
+        }
+        .button {
+            display: inline-block;
+            background-color: #E9E9EB;
+            border-width: 0;
+            color: #212529;
+            height: 4rem;
+            line-height: 4.1rem;
+            transition: background-color .3s, color .1s;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            user-select: none;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    adadasdsdasd
+    <div class="dialogOverlay">
+        <div class="dialog">
+            <div class="dialog__title">This is dialog title</div>
+            <div class="dialog__content">
+                Lorem ipsum dolor sit amet consectetur adipisicing
+            </div>
+            <div class="dialog__buttons">
+                <button class="button dialog__button">Да</button>
+                <button class="button dialog__button">Нет</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

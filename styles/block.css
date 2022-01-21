@@ -1,0 +1,32 @@
+
+.block {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    color: #212529;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1.4rem;
+}
+.block_with-border-radius {
+    border-radius: 1.6rem;
+}
+.block_with-border {
+    border: .2rem solid #ffcd39;
+}
+.block_bg-yellow {
+    background-color: #f7f4ea;
+}
+.block_bg-green {
+    background-color: #66c963;
+}
+.block_bg-success {
+    background-color: #66c963;
+}
+.block_bg-default {
+    background-color: #ffe69c;
+}
+.block__icon-close {
+    position: absolute;
+    right: 1rem;
+}
