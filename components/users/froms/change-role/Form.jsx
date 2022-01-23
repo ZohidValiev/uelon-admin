@@ -1,7 +1,7 @@
 
 import { Form as _Form, FormRow, FieldSelect } from "@/components/form"
 
-function Form({ id, value, error, disabled, onSubmit, onChange }) {
+function Form({ id, value, error, disabled, onSubmit, onChange, horizontal=false }) {
 
     return (
         <_Form 
@@ -9,7 +9,7 @@ function Form({ id, value, error, disabled, onSubmit, onChange }) {
             className="form_size-sm"
             onSubmit={onSubmit}
         >
-            <FormRow error={error}>
+            <FormRow error={error} horizontal={horizontal}>
                 <FieldSelect
                     inputClass="form__input_size-sm"
                     name="value"
@@ -17,6 +17,7 @@ function Form({ id, value, error, disabled, onSubmit, onChange }) {
                     value={value}
                     disabled={disabled}
                     onChange={onChange}
+                    horizontal={horizontal}
                 >
                     <option value="ROLE_USER">Пользователь</option>
                     <option value="ROLE_MODERATOR">Модератор</option>

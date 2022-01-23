@@ -58,7 +58,6 @@ export async function getServerSideProps(context) {
     try {
         response = await api.loadCategoriesLevel1()
     } catch (error) {
-        console.error(error)
         return {
             notFound: true,
         }

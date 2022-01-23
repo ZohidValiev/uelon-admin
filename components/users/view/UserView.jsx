@@ -1,4 +1,5 @@
 
+import UserRole from "./UserRole"
 import UserStatus from "./UserStatus"
 import UserViewItem from "./UserViewItem"
 import styles from "@/styles/ViewGrid.module.css"
@@ -10,11 +11,7 @@ function UserView({ user, onClickNickname, onClickEmail, onClickStatus, onClickR
         { title: "Псевдоним", value: user.nickname, onClick: onClickNickname },
         { title: "Email", value: user.email, onClick: onClickEmail },
         { title: "Статус", value: <UserStatus status={user.status} />, onClick: onClickStatus },
-        { 
-            title: "Роль", 
-            value: user.roles.filter((role) => role !== "ROLE_GUEST").join(", "), 
-            onClick: onClickRole 
-        },
+        { title: "Роль", value: <UserRole roles={user.roles} />, onClick: onClickRole },
         { title: "Дата создания", value: user.createTimeFormated },
     ]
 
