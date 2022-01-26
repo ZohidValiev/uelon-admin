@@ -1,6 +1,8 @@
 
-function FieldInput(
-    { label, name, value, labelClass, inputClass, readOnly, required, horizontal = false, ...props }) {
+function FieldInput({ 
+    label, name, value, labelClass, inputClass, readOnly, required, 
+    horizontal=false, type="input", ...props 
+}) {
 
     labelClass ??= ''
     inputClass ??= ''
@@ -23,11 +25,14 @@ function FieldInput(
 
     return (
         <>
-            <label htmlFor={name} 
-                   className={classesLabel.join(" ")}>
+            <label 
+                htmlFor={name} 
+                className={classesLabel.join(" ")}
+            >
                 {label}
             </label>
             <input 
+                type={type}
                 id={name}
                 name={name}
                 value={value}
