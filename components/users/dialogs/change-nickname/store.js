@@ -1,7 +1,9 @@
 
 import { makeObservable, observable, action, runInAction, autorun } from "mobx"
 import * as api from "@/api/users"
+import { enableStaticRendering } from "mobx-react"
 
+enableStaticRendering(typeof window === "undefined")
 
 class Store 
 {

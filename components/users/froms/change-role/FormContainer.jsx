@@ -28,10 +28,13 @@ class FormContainer extends Component
                 },
                 range: {
                     range: [
-                        0, // deleted
-                        1, // inactive
-                        2, // active
-                        3, // blocked
+                        "ROLE_USER",
+                        "ROLE_MODERATOR",
+                        "ROLE_ADMIN",
+                        // 0, // deleted
+                        // 1, // inactive
+                        // 2, // active
+                        // 3, // blocked
                     ],
                     message: "Выбрано неправильное значение",
                 }

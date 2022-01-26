@@ -1,7 +1,7 @@
 
 import { useCallback } from "react"
 import Validator from "@/utils/validator"
-import { FormValue } from "@/components/users"
+import { FormValue } from "../form-value/Form"
 import Form from "./Form"
 
 function FormContainer2({ id, value, disabled, onSubmit, horizontal=false }) {

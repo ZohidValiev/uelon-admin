@@ -1,6 +1,5 @@
 
 import { Component } from "react"
-import Form from "./Form"
 
 
 class Form extends Component 
@@ -57,7 +56,7 @@ class Form extends Component
             onSubmit: this.onSubmit,
         }
 
-        return this.props.render(props)
+        return render(props)
     }
 }
 

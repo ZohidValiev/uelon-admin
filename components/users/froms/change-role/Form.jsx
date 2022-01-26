@@ -11,9 +11,10 @@ function Form({ id, value, error, disabled, onSubmit, onChange, horizontal=false
         >
             <FormRow error={error} horizontal={horizontal}>
                 <FieldSelect
+                    labelClass="form__label_required"
                     inputClass="form__input_size-sm"
                     name="value"
-                    label="Роль:"
+                    label="Роль"
                     value={value}
                     disabled={disabled}
                     onChange={onChange}

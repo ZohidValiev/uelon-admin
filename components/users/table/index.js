@@ -1,2 +1,2 @@
 
-export { default as Table } from "./TableContainer"
+export { default as TableContainer } from "./TableContainer"

@@ -10,9 +10,10 @@ export default class RangeValidator extends BaseValidator
         // array or function
         this.range   = options?.range
         this.not     = options?.not ?? false
+        this.strict  = options?.strict ?? false
         this.message = options?.message ?? '{property} имеет неправильное значение'
 
-        if (!Array.isArray(this.range) || typeof this.range !== 'function') {
+        if (!Array.isArray(this.range) && typeof this.range !== 'function') {
             throw new Error('Поле range должно быть либо массивом, либо функцией')
         }
     }
@@ -29,9 +30,9 @@ export default class RangeValidator extends BaseValidator
         let _in = false
 
         if (Array.isArray(value)) {
-            _in = this._isSubset(value, strict)
+            _in = this._isSubset(value, this.strict)
         } else {
-            _in = this._in(value, strict)
+            _in = this._isIn(value, this.strict)
         }
 
         if (_in === this.not) {

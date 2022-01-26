@@ -1,5 +1,6 @@
 
-import { useUser } from "@/api/users-hook"
+import { useUser } from "@/hooks/users"
+import { useRouter } from "next/router"
 import UserView from "./UserView"
 import { _changeNicknameDialog } from "@/components/users/dialogs/change-nickname"
 import { _changeRoleDialog } from "@/components/users/dialogs/change-role"
@@ -7,9 +8,9 @@ import { _changeStatusDialog } from "@/components/users/dialogs/change-status"
 import { _info } from "@/components/info-dialog"
 
 
-function UserViewContainer({ id }) {
-
-    const { data:user, error, mutate } = useUser(id)
+function UserViewContainer() {
+    const { query } = useRouter()
+    const { data:user, error, mutate } = useUser(query.id)
 
     const handleClickNickname = () => {
         _changeNicknameDialog.open(user, {
@@ -25,7 +26,7 @@ function UserViewContainer({ id }) {
     const handleClickRole = () => {
         _changeRoleDialog.open(user, {
             onOk(user) {
-                console.log(user)
+                mutate(user, false)
             },
             onError(error) {
                 _info.openError("Ошибка", "error")
@@ -36,7 +37,7 @@ function UserViewContainer({ id }) {
     const handleClickStatus = () => {
         _changeStatusDialog.open(user, {
             onOk(user) {
-                console.log(user)
+                mutate(user, false)
             },
             onError(error) {
                 _info.openError("Ошибка", "error")

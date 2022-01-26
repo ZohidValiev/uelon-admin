@@ -8,13 +8,13 @@ import { ChangeRoleDialog } from "@/components/users/dialogs/change-role"
 import { ChangeStatusDialog } from "@/components/users/dialogs/change-status"
 import styles from "@/styles/Page.module.css"
 
-function UserUpdatePage({ userId }) {
+function UserUpdatePage() {
     
     return (
         <Page title="Пользователи">
             <UserTabs />
             <div className={styles.page__content}>
-                <UserView id={userId} />
+                <UserView />
                 <ChangeNicknameDialog />
                 <ChangeRoleDialog />
                 <ChangeStatusDialog />
@@ -40,8 +40,7 @@ export async function getServerSideProps({ params:{ id } }) {
         props: {
             fallback: {
                 [`/api/users/${id}`]: response.data
-            },
-            userId: id,
+            }
         }
     }
 }

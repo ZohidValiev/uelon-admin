@@ -2,6 +2,8 @@
 .toolbar {
     display: flex;
     flex-flow: row nowrap;
+    padding: 4px;
+    background-color: #17a2b8;
 }
 
 .toolButton {
@@ -12,7 +14,7 @@
     font-family: inherit;
     font-weight: 500;
     font-size: 1.4rem;
-    padding: 1rem 1.4rem;
+    padding: .8rem 1.4rem;
     border-radius: 0.6rem;
     cursor: pointer;
     transition: .5s;

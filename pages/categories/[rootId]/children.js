@@ -1,12 +1,12 @@
 
 import * as api from "@/api/categories"
+import { useCategoriesLevel2 } from "@/hooks/categories"
 import { _message } from "@/components/message"
 import { Page } from "@/components/page"
 import { Tabs as CategoriesTabs } from "@/components/categories-tabs"
 import { TableContainer } from "@/components/categories-table"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import styles from "@/styles/Page.module.css"
-import { useCategoriesLevel2 } from "@/api/categories-hook"
 import { useCallback } from "react"
 import { ToolBar, ToolButton } from "@/components/tool"
 import { CategoryDialog, _categoryDialog, ChangePositionDialog } from "@/components/categories-dialog"

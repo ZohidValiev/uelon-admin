@@ -1,5 +1,8 @@
 
 import { makeObservable, observable, action } from "mobx"
+import { enableStaticRendering } from "mobx-react"
+
+enableStaticRendering(typeof window === "undefined")
 
 class Store {
     visible = false

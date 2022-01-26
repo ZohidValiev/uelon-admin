@@ -1,12 +1,11 @@
 .tabs {
     display: flex;
     flex: row nowrap;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: stretch;
     height: 5rem;
     border-bottom: 2px solid #ffc107;
     background-color: #ffffff;
-    padding-left: 1rem;
 }
 
 .tabs__item {
@@ -36,6 +35,10 @@
 }
 
 .tabs__item_active {
-    background-color: #ffffff;
-    border-bottom-color: #ffffff;
+    background-color: #ffe69c;
+    border-bottom: 2px solid #ffe69c;
+}
+.tabs__item_active:hover {
+    background-color: #ffe69c;
+    border-bottom: 2px solid #ffe69c;
 }

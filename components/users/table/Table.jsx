@@ -20,13 +20,14 @@ function Table({ users, page, itemsCount }) {
             </thead>
             <tbody>
                 {users.length === 0 && <EmptyRow message="Нет пользователей"/>}
-                {users.map((user, ix) => {
-                    return <TableRow key={user.id} 
-                                     ix={callcSequenceIndex(ix + 1, page, itemsCount)} 
-                                     isLast={users.length == (ix + 1)}
-                                     user={user}
-                            />
-                })}
+                {users.map((user, ix) => (
+                    <TableRow 
+                        key={user.id} 
+                        ix={callcSequenceIndex(ix + 1, page, itemsCount)} 
+                        isLast={users.length == (ix + 1)}
+                        user={user}
+                    />
+                ))}
             </tbody>
         </table>
     )

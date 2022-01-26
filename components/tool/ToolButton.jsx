@@ -1,4 +1,5 @@
 
+import { memo } from "react"
 import { Icon } from "@/components/icon"
 import styles from "@/styles/Tool.module.css"
 
@@ -14,4 +15,4 @@ function ToolButton({ children, icon, ...props }) {
     )
 }
 
-export default ToolButton
+export default memo(ToolButton)

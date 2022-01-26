@@ -1,7 +1,9 @@
 
 import { makeObservable, observable, action, runInAction } from "mobx"
 import * as api from "@/api/users"
+import { enableStaticRendering } from "mobx-react"
 
+enableStaticRendering(typeof window === "undefined")
 
 class Store 
 {
@@ -45,23 +47,7 @@ class Store
         })
 
         try {
-            //const { data } = await api.updateRole(this.user.id, role)    
-            const data = await new Promise((resolve) => {
-                setTimeout(() => {
-                    const _user = {
-                        id: 100,
-                        nickname: "user100",
-                        email: "user100@gmail.com",
-                        roles: [
-                            "ROLE_USER",
-                            "ROLE_GUEST",
-                        ],
-                        status: 2,
-                        createTime: "01.01.2022",
-                        updateTime: "01.01.2022",
-                    }
-                }, 5000)
-            })
+            const { data } = await api.updateUserRole(this.user.id, role)
             this.onOk(data)
         } catch (error) {
             this.onError && this.onError(error)

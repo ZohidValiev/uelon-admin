@@ -1,6 +1,6 @@
 
-import * as api from "@/api/categories.js"
-import { useCategoriesLevel1 } from "@/api/categories-hook"
+import * as api from "@/api/categories"
+import { useCategoriesLevel1 } from "@/hooks/categories"
 import { _message } from "@/components/message"
 import { Page } from "@/components/page"
 import { Tabs as CategoryTabs } from "@/components/categories-tabs"

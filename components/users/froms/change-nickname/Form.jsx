@@ -14,6 +14,7 @@ function Form({ id, value, error, disabled, onSubmit, onChange, horizontal = fal
                 horizontal={horizontal}
             >
                 <FieldInput 
+                    labelClass="form__label_required"
                     inputClass="form__input_size-sm"
                     name="value"
                     label="Псевдоним"

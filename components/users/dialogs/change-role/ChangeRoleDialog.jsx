@@ -12,8 +12,8 @@ function ChangeRoleDialog() {
         return null
     }
 
-    const handleSubmit = async (nickname) => {
-        store.update(nickname)
+    const handleSubmit = async (role) => {
+        store.update(role)
     }
 
     const formId = "change-role-form"

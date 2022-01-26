@@ -1,63 +1,83 @@
 
-import { observer, useLocalObservable } from "mobx-react"
+import { Component } from "react"
 import Validator from "@/utils/validator"
 import Form from "./Form"
-// import store from "./store"
 
-function FormContainer({ id, value, disabled, onSubmit }) {
 
-    const store = useLocalObservable(() => ({
-        value: value,
-        error: "",
-        get validator() {
-            if (this._validator == null) {
-                this._validator = new Validator()
-                this._validator
-                    .setValue("value", () => this.value)
-                    .setRule("value", () => ({
-                        notEmpty: {
-                            message: "Выберите значение",
-                        },
-                        range: {
-                            range: [
-                                0, // deleted
-                                1, // inactive
-                                2, // active
-                                3, // blocked
-                            ],
-                            message: "Выбрано неправильное значение",
-                        }
-                    }))
-            }
-    
-            return this._validator
-        },
-        handleChnage(value) {
-            this.value = value
-        },
-        handleSubmit() {
-            this.validator.validate()
-            this.error = this.validator.getFirstError("value") ?? ""
-
-            if (!this.validator.hasError()) {
-                onSubmit(this.value)
-            }
+class FormContainer extends Component 
+{
+    constructor(props)
+    {
+        super(props)
+        this.state = {
+            value: props.value,
+            error: "",
         }
-    }), {
-        validator: false,
-    })
+    }
 
-    return (
-        <Form 
-            id={id}
-            value={store.value}
-            error={store.error}
-            disabled={disabled}
-            onSubmit={onSubmit}
-            onChange={store.handleChange}
-            horizontal={true}
-        />
-    )
+    componentDidMount() 
+    {
+        this.validator = new Validator()
+        this.validator
+            .setValue("value", () => {
+                return this.state.value
+            })
+            .setRule("value", {
+                notEmpty: {
+                    message: "Введите значение",
+                },
+                range: {
+                    range: [
+                        0, // deleted
+                        1, // inactive
+                        2, // active
+                        3, // blocked
+                    ],
+                    message: "Выбрано неправильное значение",
+                }
+            })
+    }
+
+    componentWillUnmount() 
+    {
+        this.validator = null
+    }
+
+    handleChange = (e) =>
+    {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) =>
+    {
+        e.preventDefault()
+        this.validator.validate()
+        this.setState({
+            error: this.validator.getFirstError("value") ?? ""
+        })
+        if (!this.validator.hasErrors()) {
+            this.props.onSubmit(this.state.value)
+        }
+    }
+
+    render() {
+        const { value, error } = this.state
+        const { id, disabled } = this.props
+
+        return (
+            <Form 
+                id={id}
+                value={value}
+                error={error}
+                disabled={disabled}
+                onSubmit={this.handleSubmit}
+                onChange={this.handleChange}
+                horizontal={true}
+            />
+        )
+    }
 }
 
-export default observer(FormContainer)
+export default FormContainer

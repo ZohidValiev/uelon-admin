@@ -1,33 +1,37 @@
 
 import { useState, useCallback } from "react"
-import { useUsers } from "@/api/users-hook"
-import { Table } from "@/components/users/table"
+import { useUsers } from "@/hooks/users"
+import Table from "./Table"
 import { PaginationBlock, Pagination } from "@/components/pagination"
 
 
-let prevPage = 1
-const ITEMS_COUNT = 20
+// let prevPage = 1
+// const ITEMS_COUNT = 20
 
 function TableContainer() {
 
-    const [page, setPage] = useState(1)
-    const { items, isLoading, error, totalItems } = useUsers(page)
+    const ITEMS_COUNT = 5//20
 
-    if (isLoading) {
-        return "Loading ..."
-    }
-
-    if (error) {
-        return "error: " + error
-    }
+    const [state, setState] = useState(() => ({
+        prevPage: 1,
+        page: 1,
+    }))
 
     const handleChangePage = useCallback((pageNumber) => {
-        prevPage = page
-        setPage(pageNumber)
-    }, [page])
+        setState({
+            prevPage: state.page,
+            page: pageNumber,
+        })
+    }, [state])
 
-    const _page = isLoading ? prevPage : page
-    
+    const { items, totalItems, isLoading, error } = useUsers(state.page)
+
+    if (error) {
+        return "Error"
+    }
+
+    const _page = isLoading ? state.prevPage : state.page
+
     return (
         <>
             <Table users={items} page={_page} itemsCount={ITEMS_COUNT} />
@@ -35,7 +39,7 @@ function TableContainer() {
                 ? null
                 : <PaginationBlock>
                     <Pagination 
-                        activePage={page}
+                        activePage={state.page}
                         itemsCountPerPage={ITEMS_COUNT}
                         totalItemsCount={totalItems}
                         pageRangeDisplayed={10}

@@ -11,6 +11,18 @@ export async function loadUser(id) {
 
 export async function updateUserNickname(id, nickname) {
     return xhr.patch(`/api/users/${id}/nickname`, {
-        nickname,
+        value: nickname,
+    })
+}
+
+export async function updateUserStatus(id, status) {
+    return xhr.patch(`/api/users/${id}/status`, {
+        value: status,
+    })
+}
+
+export async function updateUserRole(id, role) {
+    return xhr.patch(`/api/users/${id}/role`, {
+        value: role,
     })
 }
