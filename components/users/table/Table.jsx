@@ -5,7 +5,7 @@ import EmptyRow from "./EmptyRow"
 import styles from "@/styles/Table.module.css"
 
 
-function Table({ users, page, itemsCount }) {
+function Table({ users, page, totalItemsCount }) {
 
     return (
         <table className={styles.table}>
@@ -23,7 +23,7 @@ function Table({ users, page, itemsCount }) {
                 {users.map((user, ix) => (
                     <TableRow 
                         key={user.id} 
-                        ix={callcSequenceIndex(ix + 1, page, itemsCount)} 
+                        ix={callcSequenceIndex(ix + 1, page, totalItemsCount)} 
                         isLast={users.length == (ix + 1)}
                         user={user}
                     />

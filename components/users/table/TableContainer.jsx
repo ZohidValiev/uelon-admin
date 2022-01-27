@@ -1,12 +1,12 @@
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { useUsers } from "@/hooks/users"
+import useEM from "@/hooks/event-manager"
+import { _message } from "@/components/message"
+import { _info } from "@/components/info-dialog"
 import Table from "./Table"
 import { PaginationBlock, Pagination } from "@/components/pagination"
 
-
-// let prevPage = 1
-// const ITEMS_COUNT = 20
 
 function TableContainer() {
 
@@ -24,7 +24,27 @@ function TableContainer() {
         })
     }, [state])
 
-    const { items, totalItems, isLoading, error } = useUsers(state.page)
+    const { items:users, totalItems, isLoading, error, mutate } = useUsers(state.page, {
+        onSuccess:() => {
+            _message.close()
+        }
+    })
+
+    const em = useEM()
+    useEffect(() => {
+        em.on("users:created", (user) => {
+            if (state.page == 1) {
+                mutate()
+                _message.open("Ждите, идет обновление...")
+            } else {
+                _info.openInfo("Уведомление", `Пользователь "${user.nickname}" успешно добавлен.`)
+            }
+        })
+
+        return () => {
+            em.off("users:created")
+        }
+    }, [users, state, mutate, em])
 
     if (error) {
         return "Error"
@@ -34,7 +54,7 @@ function TableContainer() {
 
     return (
         <>
-            <Table users={items} page={_page} itemsCount={ITEMS_COUNT} />
+            <Table users={users} page={_page} totalItemsCount={ITEMS_COUNT} />
             { totalItems <= ITEMS_COUNT
                 ? null
                 : <PaginationBlock>

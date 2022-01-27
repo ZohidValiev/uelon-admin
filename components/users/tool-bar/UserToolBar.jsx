@@ -1,12 +1,27 @@
 
+import useEM from "@/hooks/event-manager"
 import { ToolBar, AddToolButton } from "@/components/tool"
+import { _createUserDialog } from "@/components/users/dialogs/create"
 
 
-function UserToolBar({ onClickAdd }) {
+function UserToolBar() {
+
+    const em = useEM()
+
+    const handleClickAdd = () => {
+        _createUserDialog.open({
+            onOk(user) {
+                em.trigger("users:created", user)
+            },
+            onError(error) {
+                console.error("onError: ", error)
+            },
+        })
+    }
 
     return (
         <ToolBar>
-            <AddToolButton onClick={onClickAdd}>
+            <AddToolButton onClick={handleClickAdd}>
                 Добавить
             </AddToolButton>
         </ToolBar>
