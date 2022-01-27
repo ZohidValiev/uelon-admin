@@ -15,14 +15,15 @@ export default class CompareValidator extends BaseValidator
         this.compareProperty = options?.compareProperty ?? null
         this.compareValue    = options?.compareValue ?? null
         this.operator        = options?.operator ?? '=='
+        this.message         = options?.message ?? null
 
-        if (options?.message == null) {
+        if (this.message == null) {
             switch (this.operator) {
                 case '==':
-                    this.message = '{pproperty} должен быть равен {compareValueOrProperty}'
+                    this.message = '{property} должен быть равен {compareValueOrProperty}'
                     break
                 case '===':
-                    this.message = '{pproperty} должен быть равен {compareValueOrProperty}'
+                    this.message = '{property} должен быть равен {compareValueOrProperty}'
                     break
                 case '!=':
                     this.message = '{property} не должен быть равен {compareValueOrProperty}'
@@ -64,11 +65,12 @@ export default class CompareValidator extends BaseValidator
             compareValue    = this.getValue(compareProperty)
         }
 
-        if (!this._compareValues(this.operator, this.type, value, this.compareValue)) {
+        if (!this._compareValues(this.operator, this.type, value, compareValue)) {
             this.addError(property, this.message
+                    .replace('{property}', property)
                     .replace('{compareProperty}', compareProperty)
-                    .replace('{compareValue}', this.compareValue)
-                    .replace('{compareValueOrProperty}', this.compareValueOrProperty)
+                    .replace('{compareValue}', compareValue)
+                    .replace('{compareValueOrProperty}', compareValueOrProperty)
             )
         }
     }
