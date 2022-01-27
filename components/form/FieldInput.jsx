@@ -1,6 +1,6 @@
 
 function FieldInput({ 
-    label, name, value, labelClass, inputClass, readOnly, required, 
+    label, name, value, labelTitle="", labelClass, inputClass, readOnly, required, 
     horizontal=false, type="input", ...props 
 }) {
 
@@ -28,6 +28,7 @@ function FieldInput({
             <label 
                 htmlFor={name} 
                 className={classesLabel.join(" ")}
+                title={labelTitle}
             >
                 {label}
             </label>

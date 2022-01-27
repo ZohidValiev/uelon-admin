@@ -1,6 +1,6 @@
 
 function FieldSelect({ 
-        label, name, value, labelClass, inputClass, readOnly, required, children, 
+        label, name, value, labelTitle="", labelClass, inputClass, readOnly, required, children, 
         horizontal = false, ...props 
     }) {
 
@@ -25,8 +25,11 @@ function FieldSelect({
 
     return (
         <>
-            <label htmlFor={name}
-                   className={classesLabel.join(" ")}>
+            <label 
+                htmlFor={name}
+                className={classesLabel.join(" ")}
+                title={labelTitle}
+            >
                 {label}
             </label>
             <select id={name}

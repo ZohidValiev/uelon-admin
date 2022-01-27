@@ -1,5 +1,6 @@
 
-function FieldTextarea({ label, name, value, labelClass, inputClass, readOnly, required, ...props }) {
+function FieldTextarea({ 
+    label, name, value, labelTitle="", labelClass, inputClass, readOnly, required, ...props }) {
 
     labelClass ??= ''
     inputClass ??= ''
@@ -8,8 +9,11 @@ function FieldTextarea({ label, name, value, labelClass, inputClass, readOnly, r
 
     return (
         <>
-            <label htmlFor={name} 
-                   className={`form__label ${labelClass}` + (required ? " form__label-required" : "")}>
+            <label 
+                htmlFor={name} 
+                className={`form__label ${labelClass}` + (required ? " form__label-required" : "")}
+                title={labelTitle}
+            >
                 {label}
             </label>
             <textarea id={name}
