@@ -62,12 +62,13 @@
     padding: 0 1.4rem;
     font-size: inherit;
     grid-column: 1/2;
-    grid-row: 2/3
+    grid-row: 2/3;
+    border: 1px solid #ffcd39;
   }
   .form__input_horizontal {
     grid-column: 2/3;
     grid-row: 1/2;
-    border: 1px solid #ffcd39;
+    /* border: 1px solid #ffcd39; */
     border-left-width: 0;
   }
   .form__input_size-sm {
@@ -91,12 +92,15 @@
     flex-flow: row nowrap;
     margin: 2rem 0 1rem;
   }
-  .has-errors .v-label {
+  .has-errors .form__label_horizontal.v-label {
     border: 1px solid #e35d6a !important;
     border-right-width: 0 !important;
   }
   .has-errors .v-input {
     border: 1px solid #e35d6a !important;
+  }
+  .has-errors .form__input_horizontal.v-input {
+    /* border: 1px solid #e35d6a !important; */
     border-left-width: 0 !important;
   }
   .invalid {
@@ -110,6 +114,7 @@
       /* padding: 0 0 0 1rem; */
       grid-column: 1/2;
       grid-row: 3/4;
+      text-align: right;
   }
   .invalid_horizontal {
     grid-column: 1/3;
