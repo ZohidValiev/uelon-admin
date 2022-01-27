@@ -1,4 +1,16 @@
 
+export function getUserRole(roles) {
+    if (roles.includes("ROLE_ADMIN")) {
+        return "ROLE_ADMIN"
+    }
+
+    if (roles.includes("ROLE_MODERATOR")) {
+        return "ROLE_MODERATOR"
+    }
+
+    return "ROLE_USER"
+}
+
 export function getUserRoles() {
     return [
         ["ROLE_USER", "Пользователь"],

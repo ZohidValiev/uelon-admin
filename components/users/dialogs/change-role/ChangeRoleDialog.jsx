@@ -1,4 +1,5 @@
 
+import { getUserRole } from "@/utils/functions"
 import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/dialog"
 import { observer } from "mobx-react"
@@ -39,7 +40,7 @@ function ChangeRoleDialog() {
             <Dialog title="Изменить" buttons={buttons}>
                 <ChangeRoleForm 
                     id={formId}
-                    value={store.user}
+                    value={getUserRole(store.user.roles)}
                     disabled={store.submited}
                     onSubmit={handleSubmit}
                 />
