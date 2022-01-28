@@ -17,11 +17,19 @@ export function useCategory(id) {
 }
 
 export function useCategoriesLevel1(config) {
-    return useSWR("/api/categories", fetcher, config)
+    return useSWR("/api/categories", fetcher, {
+        ...config,
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+    })
 }
 
 export function useCategoriesLevel2(parentId, config) {
-    return useSWR(`/api/categories/${parentId}/children`, fetcher, config)
+    return useSWR(`/api/categories/${parentId}/children`, fetcher, {
+        ...config,
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+    })
 }
 
 export function useCategoriesLevel3(parentId, config) {
