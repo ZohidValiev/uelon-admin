@@ -9,6 +9,7 @@ import '@/styles/loading-bar.css'
 import { ConfirmDialog } from "@/components/confirm-dialog"
 import { Message } from '@/components/message'
 import { InfoDialog } from "@/components/info-dialog"
+import { InfoLoader } from "@/components/loaders/info-loader"
 
 
 
@@ -29,6 +30,7 @@ function MyApp({ Component, pageProps: { fallback, ...pageProps }}) {
       <ConfirmDialog />
       <Message />
       <InfoDialog />
+      <InfoLoader />
     </>
   )
 }
