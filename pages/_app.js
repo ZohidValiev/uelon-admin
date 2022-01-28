@@ -5,7 +5,6 @@ import '@/styles/globals.css'
 import '@/styles/block.css'
 import '@/styles/form.css'
 import '@/styles/icon.css'
-import '@/styles/loading-bar.css'
 import '@/styles/loading.css'
 import { ConfirmDialog } from "@/components/confirm-dialog"
 import { Message } from '@/components/message'
