@@ -19,7 +19,7 @@ export const useUser = (id, config) => {
 
 export const useUsers = (page, config = {}) => {
     return useSWR(`/api/users?page=${page}&_order[id]=desc`, fetcher, {
-        ...config,
         use: [ mLaggyHydra ],
+        ...config,
     })
 }
