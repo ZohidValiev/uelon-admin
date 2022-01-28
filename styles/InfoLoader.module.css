@@ -1,0 +1,18 @@
+
+.infoLoader {
+    background-color: #ffffff;
+    background-image: url("/loading24x24.gif");
+    background-position: .6rem center;
+    background-repeat: no-repeat;
+    box-shadow: 1px 0 4px #17a2b8;
+    color: #17a2b8;
+    width: 13rem;
+    height: 3.9rem;
+    line-height: 3.9rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: 0 0 0 4rem;
+    position: fixed;
+    top: 4px;
+    right: 4px;
+}
