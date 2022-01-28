@@ -22,7 +22,6 @@ function CreateUserDialog() {
             type: "submit",
             form: formId,
             value: "Добавить",
-            className: store.submited ? "button_is-loading" : "",
             disabled: store.submited,
         },
         {
@@ -36,7 +35,11 @@ function CreateUserDialog() {
 
     return (
         <Portal>
-            <Dialog title="Добавить пользователя" loading={true} buttons={buttons}>
+            <Dialog 
+                title="Добавить пользователя" 
+                loading={store.submited} 
+                buttons={buttons}
+            >
                 <CreateForm 
                     id={formId}
                     horizontal={true}

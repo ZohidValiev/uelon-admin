@@ -22,7 +22,6 @@ const ChangeNicknameDialog = observer(() => {
             type: "submit",
             form: formId,
             value: "Измнеить",
-            className: store.submited ? "button_is-loading" : "",
             disabled: store.submited,
         },
         {
@@ -36,7 +35,11 @@ const ChangeNicknameDialog = observer(() => {
 
     return (
         <Portal>
-            <Dialog title="Изменить" buttons={buttons}>
+            <Dialog 
+                title="Изменить" 
+                loading={store.submited}
+                buttons={buttons}
+            >
                 <ChangeNicknameForm 
                     id={formId}
                     value={store.user.nickname}

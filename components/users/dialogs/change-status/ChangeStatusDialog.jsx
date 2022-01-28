@@ -22,7 +22,6 @@ function ChangeStatusDialog() {
             type: "submit",
             form: formId,
             value: "Измнеить",
-            className: store.submited ? "button_is-loading" : "",
             disabled: store.submited,
         },
         {
@@ -36,7 +35,11 @@ function ChangeStatusDialog() {
 
     return (
         <Portal>
-            <Dialog title="Изменить" buttons={buttons}>
+            <Dialog 
+                title="Изменить" 
+                loading={store.submited}
+                buttons={buttons}
+            >
                 <ChangeStatusForm 
                     id={formId}
                     value={store.user.status}
