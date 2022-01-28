@@ -1,17 +1,28 @@
 
+import { Loader } from "@/components/loaders/loader"
 import styles from "@/styles/Dialog.module.css"
 
-function Dialog({ title, type="", children, buttons = [] }) {
+function Dialog({ title, type="", children, loading=false, buttons = [] }) {
 
     const dialogClass = getDialogTypeClass(type)
     const dialogTitleClass = getDialogTitleTypeClass(type)
     const dialogButtonsClass = getDialogButtonsTypeClass(type)
     const dialogButtonClass = getDialogButtonTypeClass(type)
 
+    const classesTitle = [
+        styles.dialog__title, 
+        dialogTitleClass,
+    ]
+
     return (
         <div className={styles.dialogOverlay}>
             <div className={styles.dialog + ` ${dialogClass}`}>
-                { title && <div className={styles.dialog__title + ` ${dialogTitleClass}`}>{title}</div> }
+                { title && (
+                    <div className={classesTitle.join(" ")}>
+                        {title}
+                        { loading && <Loader /> }
+                    </div>
+                )}
                 <div className={styles.dialog__content}>
                     {children}
                 </div>

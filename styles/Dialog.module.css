@@ -24,6 +24,9 @@
     border-color: #d46666;
 }
 .dialog__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #ffcd39;
     height: 3.6rem;
     line-height: 3.6rem;
