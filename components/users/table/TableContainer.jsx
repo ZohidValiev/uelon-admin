@@ -1,9 +1,10 @@
 
 import { useState, useCallback, useEffect } from "react"
 import { useUsers } from "@/hooks/users"
-import useEM from "@/hooks/event-manager"
+import useEventManager from "@/hooks/event-manager"
 import { _message } from "@/components/message"
 import { _info } from "@/components/info-dialog"
+import { _infoLoader } from "@/components/loaders/info-loader"
 import Table from "./Table"
 import { PaginationBlock, Pagination } from "@/components/pagination"
 
@@ -24,18 +25,23 @@ function TableContainer() {
         })
     }, [state])
 
-    const { items:users, totalItems, isLoading, error, mutate } = useUsers(state.page, {
+    const { items:users, totalItems, isLoading, error, mutate, isValidating } = useUsers(state.page, {
         onSuccess:() => {
             _message.close()
-        }
+            _infoLoader.close()
+        },
     })
 
-    const em = useEM()
+    if (isValidating) {
+        _infoLoader.open()
+    }
+
+    const em = useEventManager()
     useEffect(() => {
         em.on("users:created", (user) => {
             if (state.page == 1) {
                 mutate()
-                _message.open("Ждите, идет обновление...")
+                // _message.open("Ждите, идет обновление...")
             } else {
                 _info.openInfo("Уведомление", `Пользователь "${user.nickname}" успешно добавлен.`)
             }

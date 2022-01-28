@@ -1,6 +1,5 @@
 
 import { SWRConfig } from 'swr'
-import Script from "next/script"
 import '@/styles/globals.css'
 import '@/styles/block.css'
 import '@/styles/form.css'
@@ -17,10 +16,6 @@ function MyApp({ Component, pageProps: { fallback, ...pageProps }}) {
   
   return (
     <>
-      <Script 
-        src="/js/loading-bar.min.js"
-        strategy="beforeInteractive"
-      />
       <SWRConfig value={{ 
           //fetcher, 
           fallback,
