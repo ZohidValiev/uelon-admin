@@ -1,0 +1,14 @@
+
+.dash-spinner-24x24 { 
+    animation: dash-spinner-24x24 0.2s steps(3) infinite; 
+    display: block; width: 24px; height: 24px; 
+    background-image:url(/loading24x24.png); 
+}
+@keyframes dash-spinner-24x24 { 
+    from { 
+        background-position: 0px 0px; 
+    } 
+    to { 
+        background-position: 0px -72px; 
+    } 
+}
