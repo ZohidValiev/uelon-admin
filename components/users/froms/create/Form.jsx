@@ -42,6 +42,7 @@ function Form({ id, fields, errors, disabled, style, onSubmit, onChange, onBlur,
                         required={true}
                         horizontal={horizontal}
                         onChange={onChange}
+                        onBlur={onBlur}
                     />
                 </FormRow>
                 <FormRow 
