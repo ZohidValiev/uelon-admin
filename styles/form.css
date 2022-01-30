@@ -29,6 +29,7 @@
     font-weight: 500;
     grid-column: 1/2;
     grid-row: 1/2;
+    background-color: #ffe69c;
   }
   .form__label_horizontal {
     display: flex;
@@ -73,11 +74,11 @@
   .form__input_readonly {
     background-color: #e2e3e5;
   }
-  .form__input_is-loading {
+  /* .form__input_is-loading {
     background-image: url("/ajax-loader.gif");
     background-position: center right;
     background-repeat: no-repeat;
-  }
+  } */
   .form__buttons {
     display: flex;
     align-items: center;

@@ -23,22 +23,24 @@ function Dialog({ title, type="", children, loading=false, buttons = [] }) {
                         { loading && <Loader /> }
                     </div>
                 )}
-                <div className={styles.dialog__content}>
-                    {children}
+                <div className={styles.dialog__body}>
+                    <div className={styles.dialog__content}>
+                        {children}
+                    </div>
+                    { buttons.length > 0 && 
+                        <div className={styles.dialog__buttons + ` ${dialogButtonsClass}`}>
+                            { buttons.map(({ value, className="", ...props }, ix) => {
+                                return (
+                                    <button key={ix} 
+                                            className={`button ${styles.dialog__button} ${dialogButtonClass} ${className}`} 
+                                            {...props}>
+                                        {value}
+                                    </button>
+                                )
+                            }) }
+                        </div>
+                    }
                 </div>
-                { buttons.length > 0 && 
-                  <div className={styles.dialog__buttons + ` ${dialogButtonsClass}`}>
-                    { buttons.map(({ value, className="", ...props }, ix) => {
-                        return (
-                            <button key={ix} 
-                                    className={`button ${styles.dialog__button} ${dialogButtonClass} ${className}`} 
-                                    {...props}>
-                                {value}
-                            </button>
-                        )
-                    }) }
-                  </div>
-                }
             </div>
         </div>
     )
