@@ -1,4 +1,5 @@
 
+import { SessionProvider } from "next-auth/react"
 import { SWRConfig } from 'swr'
 import '@/styles/globals.css'
 import '@/styles/block.css'
@@ -12,20 +13,19 @@ import { InfoLoader } from "@/components/loaders/info-loader"
 
 
 
-function MyApp({ Component, pageProps: { fallback, ...pageProps }}) {
+function MyApp({ Component, pageProps: { fallback, session, ...pageProps }}) {
   
   return (
     <>
-      <SWRConfig value={{ 
-          //fetcher, 
-          fallback,
-        }}>
-        <Component {...pageProps} />
-      </SWRConfig>
-      <ConfirmDialog />
+        <SessionProvider session={session}>
+          <SWRConfig value={{ fallback }}>
+            <Component {...pageProps} />
+          </SWRConfig>
+        </SessionProvider>
+      {/* <ConfirmDialog />
       <Message />
       <InfoDialog />
-      <InfoLoader />
+      <InfoLoader /> */}
     </>
   )
 }

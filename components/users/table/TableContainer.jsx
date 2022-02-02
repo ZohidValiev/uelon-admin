@@ -32,25 +32,25 @@ function TableContainer() {
         },
     })
 
-    if (isValidating) {
-        _infoLoader.open()
-    }
-
     const em = useEventManager()
     useEffect(() => {
-        em.on("users:created", (user) => {
+        em.on("users:created.table", (user) => {
+            _info.openInfo("Уведомление", `Пользователь "${user.nickname}" успешно добавлен.`)
             if (state.page == 1) {
                 mutate()
-                // _message.open("Ждите, идет обновление...")
-            } else {
-                _info.openInfo("Уведомление", `Пользователь "${user.nickname}" успешно добавлен.`)
             }
         })
 
         return () => {
-            em.off("users:created")
+            em.off("users:created.table")
         }
     }, [users, state, mutate, em])
+
+    useEffect(() => {
+        if (isValidating) {
+            _infoLoader.open()
+        }
+    }, [isValidating])
 
     if (error) {
         return "Error"

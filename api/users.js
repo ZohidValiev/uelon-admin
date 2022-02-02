@@ -9,6 +9,13 @@ export async function loadUser(id) {
     return xhr.get(`/api/users/${id}`)
 }
 
+export async function getUserByCredentials(username, password) {
+    return xhr.patch("/api/users/0/signin", {
+        username,
+        password,
+    })
+}
+
 export async function createUser(data) {
     return xhr.post(`/api/users`, data)
 }
