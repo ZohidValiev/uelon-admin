@@ -20,12 +20,12 @@ function MyApp({ Component, pageProps: { fallback, session, ...pageProps }}) {
         <SessionProvider session={session}>
           <SWRConfig value={{ fallback }}>
             <Component {...pageProps} />
+            <ConfirmDialog />
+            <Message />
+            <InfoDialog />
+            <InfoLoader />
           </SWRConfig>
         </SessionProvider>
-      {/* <ConfirmDialog />
-      <Message />
-      <InfoDialog />
-      <InfoLoader /> */}
     </>
   )
 }
