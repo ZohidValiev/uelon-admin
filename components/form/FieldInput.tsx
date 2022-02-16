@@ -1,22 +1,24 @@
 
-import { FC } from "react"
+import { FC, ChangeEvent, FocusEvent } from "react"
 
 type Props = {
     type?: string
     name: string
     value: string|number
     label: string
-    labelTitle: string
+    labelTitle?: string
     labelClass?: string
     inputClass?: string
     readOnly?: boolean
     required?: boolean
     horizontal?: boolean
+    onChange?: (e: ChangeEvent) => void
+    onBlur?: (e: FocusEvent) => void
 }
 
 const FieldInput: FC<Props> = ({ 
     label, name, value, labelTitle, labelClass="", inputClass="", readOnly=false, required=false, 
-    horizontal=false, type="input", ...props 
+    horizontal=false, type="input", onChange, onBlur, ...props 
 }) => {
 
     const classesLabel = [
@@ -49,6 +51,8 @@ const FieldInput: FC<Props> = ({
                 value={value}
                 readOnly={readOnly}
                 className={classesInput.join(" ")}
+                onChange={onChange}
+                onBlur={onBlur}
                 {...props}
             />
         </>

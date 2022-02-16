@@ -1,5 +1,5 @@
 
-import { FC } from "react"
+import { ChangeEvent, FC, FocusEvent } from "react"
 
 type Props = {
     name: string
@@ -10,11 +10,13 @@ type Props = {
     inputClass?: string
     readOnly?: boolean
     required?: boolean
+    onChange?: (e: ChangeEvent) => void
+    onBlur?: (e: FocusEvent) => void
 }
 
 const FieldTextarea: FC<Props> = ({ 
-    label, name, value, labelTitle, labelClass="", inputClass="", 
-    readOnly=false, required=false, ...props }) => {
+    label, name, value, labelTitle, labelClass="", inputClass="", readOnly=false, required=false, 
+    onChange, onBlur, ...props }) => {
 
     return (
         <>

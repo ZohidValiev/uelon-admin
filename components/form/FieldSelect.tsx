@@ -1,5 +1,5 @@
 
-import { FC, PropsWithChildren } from "react"
+import { FC, ChangeEvent, FocusEvent } from "react"
 
 type Props = {
     name: string
@@ -11,11 +11,13 @@ type Props = {
     readOnly?: boolean
     required?: boolean
     horizontal?: boolean
+    onChange?: (e: ChangeEvent) => void
+    onBlur?: (e: FocusEvent) => void
 }
 
-const FieldSelect: FC<PropsWithChildren<Props>> = ({ 
+const FieldSelect: FC<Props> = ({ 
         label, name, value, labelTitle, labelClass="", inputClass="", readOnly=false, required=false, 
-        horizontal=false, children, ...props 
+        horizontal=false, children, onChange, onBlur, ...props 
     }) => {
 
     const classesLabel = [
@@ -46,6 +48,8 @@ const FieldSelect: FC<PropsWithChildren<Props>> = ({
                 name={name}
                 defaultValue={value}
                 className={classesInput.join(" ")}
+                onChange={onChange}
+                onBlur={onBlur}
                 {...props}
             >
                 {children}

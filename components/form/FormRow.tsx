@@ -1,5 +1,5 @@
 
-import { FC, PropsWithChildren } from "react"
+import { FC } from "react"
 import Error from "./Error"
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
     horizontal?: boolean
 }
 
-const FormRow: FC<PropsWithChildren<Props>> = ({ children, error="", className="", horizontal=false }) => {
+const FormRow: FC<Props> = ({ children, error="", className="", horizontal=false }) => {
 
     const classes = [
         "form__row",
