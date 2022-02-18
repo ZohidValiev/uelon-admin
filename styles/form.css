@@ -24,12 +24,15 @@
     grid-template-rows: auto auto;
   }
   .form__label {
-    margin-bottom: .4rem;
+    font-size: 1.5rem;
+    padding: .7rem 1.4rem .8rem;
     position: relative;
     font-weight: 500;
     grid-column: 1/2;
     grid-row: 1/2;
     background-color: #ffe69c;
+    border: 1px solid #ffcd39;
+    border-bottom-width: 0;
   }
   .form__label_horizontal {
     display: flex;
@@ -60,6 +63,16 @@
     grid-column: 1/2;
     grid-row: 2/3;
     border: 1px solid #ffcd39;
+    border-top-width: 0;
+  }
+  .form__input_text-center {
+    text-align: center;
+  }
+  .form__input_password {
+    font-size: 2.4rem;
+  }
+  .form__input_bold {
+    font-weight: 500;
   }
   .form__input_horizontal {
     grid-column: 2/3;
@@ -74,26 +87,35 @@
   .form__input_readonly {
     background-color: #e2e3e5;
   }
-  /* .form__input_is-loading {
-    background-image: url("/ajax-loader.gif");
-    background-position: center right;
-    background-repeat: no-repeat;
-  } */
+  .form__error-block {
+    font-size: 1.5rem;
+    background-color: #e35d6a;
+    border: 1px solid red;
+    padding: .7rem 1.4rem .8rem;
+    color: #ffffff;
+  }
   .form__buttons {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: row nowrap;
-    margin: 2rem 0 1rem;
+    margin: 1rem 0;
+  }
+  .has-errors .v-input {
+    border-color: #e35d6a;
+  }
+  .has-errors .v-label {
+    border-color: #e35d6a;
+    background-color: #e35d6a;
+    color: #ffffff;
+    text-decoration: none;
   }
   .has-errors .form__label_horizontal.v-label {
     border: 1px solid #e35d6a !important;
     border-right-width: 0 !important;
   }
-  .has-errors .v-input {
-    border: 1px solid #e35d6a !important;
-  }
   .has-errors .form__input_horizontal.v-input {
+    border: 1px solid #e35d6a !important;
     border-left-width: 0 !important;
   }
   .invalid {
@@ -125,19 +147,20 @@
     background-color: #E9E9EB;
     border-width: 0;
     color: #212529;
-    height: 4rem;
-    line-height: 4.1rem;
+    padding: 1rem 4rem;
     transition: background-color .3s, color .1s;
     text-align: center;
     text-decoration: none;
     outline: none;
     user-select: none;
     position: relative;
+    transition: all .2s;
   }
   .button:hover {
     background-color: #ffc107;
     cursor: pointer;
     color: #212529;
+    box-shadow: 0 0 4px #000000;
   }
   .button:disabled,
   .button:disabled:hover {
@@ -147,21 +170,11 @@
   .form__button {
     font-size: 1.4rem;
     font-weight: 600;
-    height: 4rem;
-    line-height: 4rem;
     color: #fff;
     background-color: #6c757d;
     border-radius: 4px;
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
   .form__button:disabled:hover {
     background-color: #6c757d;
     color: #fff;
   }
-  /* .form__button_is-loading,
-  .button_is-loading {
-    background-image: url("/loading24x24.gif");
-    background-position: center center;
-    background-repeat: no-repeat;
-  } */
