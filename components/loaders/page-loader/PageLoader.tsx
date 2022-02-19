@@ -1,12 +1,24 @@
 
+import { FC } from "react"
 import { Loader } from "@/components/loaders/loader"
 import styles from "@/styles/PageLoader.module.css"
 
+type Props = {
+    size?: number
+    status?: string
+}
 
-function PageLoader() {
+const PageLoader: FC<Props> = ({ size=48, status="загрузка" }) => {
     return (
         <div className={styles.pageLoader}>
-            <Loader size={48}/>
+            <div className={styles.pageLoader__content}>
+                <div className={styles.pageLoader__loader}>
+                    <Loader size={size}/>
+                </div>
+                <span className={styles.pageLoader__status}>
+                    {status}
+                </span>
+            </div>
         </div>
     )
 }

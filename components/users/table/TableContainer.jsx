@@ -53,7 +53,12 @@ function TableContainer() {
     }, [isValidating])
 
     if (error) {
+        console.error(error)
         return "Error"
+    }
+
+    if (isLoading) {
+        return "Loading"
     }
 
     const _page = isLoading ? state.prevPage : state.page

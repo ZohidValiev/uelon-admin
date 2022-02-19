@@ -21,15 +21,19 @@ import { AuthUser, hasPermission } from "@/types/users"
 
 
 type Props = {
-  Component: any //AuthNextPage | NextPage
+  Component: AuthNextPage | NextPage
   pageProps: {
     [key: string]: any
   }
 }
 
 function MyApp({ Component, pageProps: { fallback, session, ...pageProps }}: Props) {
+
+  let auth: AuthType | null = null
   
-  const auth = Component.auth as AuthType
+  if ("auth" in Component) {
+    auth = Component.auth
+  }
 
   return (
     <>

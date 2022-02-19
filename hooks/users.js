@@ -1,15 +1,15 @@
 
 import { mLaggyHydra } from "./middlewares"
-import { get } from "@/api/axios"
+import { instance } from "@/api/axios"
 import useSWR from "swr"
 
 const fetcher = async (url) => {
-    const response = await get(url)
+    const response = await instance.get(url)
     return response.data
 }
 
 export const useUser = (id, config) => {
-    const result = useSWR(`/api/users/${id}`, fetcher, config)
+    const result = useSWR(`/users/${id}`, fetcher, config)
 
     return {
         ...result,
@@ -18,7 +18,7 @@ export const useUser = (id, config) => {
 }
 
 export const useUsers = (page, config = {}) => {
-    return useSWR(`/api/users?page=${page}&_order[id]=desc`, fetcher, {
+    return useSWR(`/users?page=${page}&_order[id]=desc`, fetcher, {
         use: [ mLaggyHydra ],
         ...config,
     })

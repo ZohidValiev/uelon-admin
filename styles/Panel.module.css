@@ -1,13 +1,4 @@
 
-/* .panel {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-}
-.panel > :not(:last-child) {
-    margin-bottom: 2rem;
-} */
-
 .panel {
     font-size: 1.6rem;
     font-weight: 500;
@@ -20,10 +11,10 @@
 .panel_error {
     border-color: #d46666;
 }
+.panel_boxShadow {
+    box-shadow: 0 0 4px #000000;
+}
 .panel__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #ffcd39;
     height: 4rem;
     line-height: 3.6rem;

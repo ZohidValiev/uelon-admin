@@ -3,6 +3,7 @@
 # temp files
 test.js
 /html
+/test
 
 # dependencies
 /node_modules
