@@ -6,6 +6,7 @@ import Form from "./Form"
 type Props = {
     action: string
     csrfToken: string
+    error?: string
 }
 
 type State = {
@@ -102,13 +103,14 @@ class FormContainer extends Component<Props, State> {
 
     render(): ReactNode {
 
-        const { csrfToken, action } = this.props
+        const { csrfToken, action, error } = this.props
         const { fields, errors } = this.state
 
         return (
             <Form 
                 action={action}
                 csrfToken={csrfToken}
+                error={error}
                 fields={fields}
                 errors={errors}
                 onChange={this.handleChange}

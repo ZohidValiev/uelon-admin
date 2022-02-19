@@ -90,7 +90,6 @@
   .form__error-block {
     font-size: 1.5rem;
     background-color: #e35d6a;
-    border: 1px solid red;
     padding: .7rem 1.4rem .8rem;
     color: #ffffff;
   }

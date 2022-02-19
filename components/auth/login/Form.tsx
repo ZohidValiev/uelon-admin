@@ -6,6 +6,7 @@ import { Form as _Form, FormRow, FieldInput, FormButtonRow, FormButton, ErrorBlo
 type Props = {
     action?: string
     csrfToken: string
+    error?: string
     fields: { 
         username: string
         password: string
@@ -19,7 +20,7 @@ type Props = {
     onBlur:   (e: FocusEvent) => void
 }
 
-const Form: FC<Props> = ({ action, fields, errors, csrfToken, onSubmit, onChange, onBlur }) => {
+const Form: FC<Props> = ({ action, error, fields, errors, csrfToken, onSubmit, onChange, onBlur }) => {
 
     return (
         <_Form 
@@ -32,9 +33,11 @@ const Form: FC<Props> = ({ action, fields, errors, csrfToken, onSubmit, onChange
                 name="csrfToken"
                 defaultValue={csrfToken}
             />
-            <FormRow error={false} className="mb-21">
-                <ErrorBlock message="Неправельный email или пароль" />
-            </FormRow>
+            { !error ? null : (
+                <FormRow error={false} className="mb-21">
+                    <ErrorBlock message="Неправельный email или пароль" />
+                </FormRow>
+            ) }
             <FormRow error={errors.username}>
                 <FieldInput 
                     type="email"

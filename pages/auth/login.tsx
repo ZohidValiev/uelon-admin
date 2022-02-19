@@ -1,9 +1,12 @@
 
 import { NextPage, GetServerSideProps } from "next"
-import { getCsrfToken } from "next-auth/react"
+import { getCsrfToken, getSession } from "next-auth/react"
 import { Panel } from "@/components/panel"
 import { Form } from "@/components/auth/login"
 import { useRouter } from "next/router"
+import { PageLoader } from "@/components/loaders/page-loader"
+import { guestOnly } from "@/components/hoc/security"
+
 
 type Props = {
     csrfToken: string
@@ -11,28 +14,37 @@ type Props = {
 
 const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
-    const { query: { error } } = useRouter()
+    const { query: { error }, replace } = useRouter()
     
     return (
         <div className="containerCenter">
-            <Panel title="Войти">
-                { error ? "Неправильный email или пароль" : null}
+            <Panel 
+                title="Войти" 
+                shadow={true}
+            >
                 <Form 
                     action="/api/auth/callback/credentials"
                     csrfToken={csrfToken} 
+                    error={Array.isArray(error) ? error[0] : error}
                 />
             </Panel>
         </div>
     )
 }
 
-export default LoginPage
+export default guestOnly<Props>(LoginPage, {
+    spinner: PageLoader,
+})
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session   = await getSession(context)
     const csrfToken = await getCsrfToken(context)
     
     return {
-      props: { csrfToken },
+      props: { 
+        //   session,
+          csrfToken 
+        },
     }
 }
