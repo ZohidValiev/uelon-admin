@@ -58,11 +58,10 @@
     border-color: #d46666;
 }
 .dialog__button {
-    font-size: 1.4rem;
     font-weight: 500;
-    height: 3rem;
-    line-height: 3rem;
-    width: 10rem;
+    text-transform: uppercase;
+    padding: .9rem 0rem;
+    width: 12rem;
     color: #fff;
     background-color: #6c757d;
     border-radius: 4px;

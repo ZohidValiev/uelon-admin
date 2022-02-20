@@ -45,25 +45,16 @@ export namespace Auth {
 //     }    
 // }
 
-// export namespace Action {
-//     export interface UserCreateData {
-//         email: string
-//         nickname: string
-//         role: string
-//         status: number
-//         password: string
-//         useVerification: boolean
-//     }    
-// }
-
-export interface UserCreateData {
-    email: string
-    nickname: string
-    role: string
-    status: number
-    password: string
-    useVerification: boolean
-}  
+export namespace Action {
+    export interface CreateUserData {
+        email: string
+        nickname: string
+        role: string
+        status: number
+        password: string
+        useVerification: boolean
+    }    
+}
 
 export function canUserLogin(user: Auth.User): boolean {
     const roles = user.roles

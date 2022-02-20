@@ -20,7 +20,7 @@
     grid-template-rows: auto auto auto;
   }
   .form__row_horizontal {
-    grid-template-columns: 4fr 6fr;
+    grid-template-columns: 4.2fr 5.8fr;
     grid-template-rows: auto auto;
   }
   .form__label {
@@ -42,7 +42,7 @@
     padding: 0 .8rem;
     grid-column: 1/2;
     grid-row: 1/2;
-    border: 1px solid #ffcd39;
+    border-width: 1px;
     border-right-width: 0;
   }
 
@@ -77,6 +77,7 @@
   .form__input_horizontal {
     grid-column: 2/3;
     grid-row: 1/2;
+    border-width: 1px;
     border-left-width: 0;
   }
   .form__input_size-sm {
@@ -140,7 +141,6 @@
   
   .button {
     display: inline-block;
-    font-family: Roboto, Arial, sans-serif;
     font-size: 1.4rem;
     box-sizing: border-box;
     background-color: #E9E9EB;
