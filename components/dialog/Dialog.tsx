@@ -31,7 +31,9 @@ const Dialog: FC<PropsWithChildren<Props>> = ({ title, type = "", children, load
             <div className={styles.dialog + ` ${dialogClass}`}>
                 { title && (
                     <div className={classesTitle.join(" ")}>
-                        {title}
+                        <span className={styles.dialog__titleText}>
+                            {title}
+                        </span>
                         { loading && <Loader /> }
                     </div>
                 )}

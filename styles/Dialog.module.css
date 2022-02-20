@@ -36,6 +36,9 @@
     background-color: #d46666;
     color: #fff;
 }
+.dialog__titleText {
+    top: -.2rem;
+}
 .dialog__body {
     background-color: #ffffff;
     box-shadow: 0 0 2px #17a2b8 inset;
