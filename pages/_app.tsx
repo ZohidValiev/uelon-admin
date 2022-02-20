@@ -17,7 +17,7 @@ import { NextPage } from "next"
 import { PageLoader } from "@/components/loaders/page-loader"
 import { FC, useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import { AuthUser, hasPermission } from "@/types/users"
+import { Auth, hasUserRole } from "@/types/users"
 
 
 type Props = {
@@ -80,9 +80,9 @@ const Auth: FC<AuthProps> = ({ auth, children }) => {
   
   useEffect(() => {
     if (status.authenticated) {
-      const user = session.user as AuthUser
+      const user = session.user as Auth.User
 
-      if (hasPermission(user, auth.role)) {
+      if (hasUserRole(user, auth.role)) {
         setAccessGranted(true)
       }  else {
         router.replace("/auth/access-denied")
