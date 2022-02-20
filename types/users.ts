@@ -35,25 +35,37 @@ export namespace Auth {
     }
 }
 
-export interface SessionAuthUser {
-    id: number
-    roles: string[]
-    email?: string | null
-    name?: string | null
-    image?: string | null
-}
-
-
-// export interface IUserCreatePayload {
-//     email: string
-//     nickname: string
-//     role: string
-//     status: number
-//     password: string
-//     useVerification: boolean
+// export namespace Session {
+//     export interface User {
+//         id: number
+//         roles: string[]
+//         email?: string | null
+//         name?: string | null
+//         image?: string | null
+//     }    
 // }
 
-export function canUserSignIn(user: Auth.User): boolean {
+// export namespace Action {
+//     export interface UserCreateData {
+//         email: string
+//         nickname: string
+//         role: string
+//         status: number
+//         password: string
+//         useVerification: boolean
+//     }    
+// }
+
+export interface UserCreateData {
+    email: string
+    nickname: string
+    role: string
+    status: number
+    password: string
+    useVerification: boolean
+}  
+
+export function canUserLogin(user: Auth.User): boolean {
     const roles = user.roles
     return roles.includes(ROLE_MODERATOR) || roles.includes(ROLE_ADMIN)
 }
