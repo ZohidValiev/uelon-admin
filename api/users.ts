@@ -1,6 +1,6 @@
 
 import { instance }  from "./axios"
-import { IUserCreatePayload } from "../types/users"
+import { Action } from "../types/users"
 
 export async function loadUsers() {
     return instance.get("/users?_order[id]=desc")
@@ -17,7 +17,7 @@ export async function login(email: string, password: string) {
     })
 }
 
-export async function createUser(data: IUserCreatePayload) {
+export async function createUser(data: Action.CreateUserData) {
     return instance.post(`/users`, data)
 }
 
