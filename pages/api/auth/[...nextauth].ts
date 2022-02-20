@@ -3,7 +3,7 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { login } from "@/api/users"
 import { AxiosResponse } from "axios"
-import { userHasPermission, AuthUser, AuthData } from "@/types/users"
+import { canUserSignIn, Auth } from "@/types/users"
 import { tokenStore } from "@/types/token"
 
 
@@ -48,15 +48,15 @@ export default NextAuth({
         // },
         async signIn({ user, account, profile, email, credentials }) {
             if (user) {
-                const authUser = user.data as AuthUser
-                return userHasPermission(authUser)
+                const authUser = user.data as Auth.User
+                return canUserSignIn(authUser)
             }
                 
             return false
         },
         async jwt({ token, user, account, profile, isNewUser }) {
             if (user) {
-                const payload = (user as any) as AuthData
+                const payload = (user as any) as Auth.Data
                 tokenStore.setAccessToken(payload.token)
                 token.accessToken = payload.token
                 token.user = payload.data
@@ -67,7 +67,7 @@ export default NextAuth({
             session.accessToken = token.accessToken
             
             if (token.user) {
-                const authUser = token.user as AuthUser
+                const authUser = token.user as Auth.User
                 session.user = {
                     id: authUser.id,
                     email: authUser.username,

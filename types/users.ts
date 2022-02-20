@@ -4,6 +4,36 @@ export const ROLE_MODERATOR = "ROLE_MODERATOR"
 export const ROLE_ADMIN = "ROLE_ADMIN"
 export type UserRoles = typeof ROLE_USER | typeof ROLE_MODERATOR | typeof ROLE_ADMIN
 
+export namespace Entity {
+    export interface User {
+        id: number,
+        email: string,
+        nickname: string,
+        roles: string[],
+        status: number,
+        createTime: string,
+        updateTime: string,
+    }
+}
+
+/**
+ * Authentication
+ */
+export namespace Auth {
+    // Возвращаемая информация о пользователе при успешной утентификации
+    export interface User {
+        id: number
+        username: string
+        nickname: string
+        roles: UserRoles[]
+    }
+    
+    // Данные возвращаемые сервером при успешной утентификации
+    export interface Data {
+        token: string
+        data: User
+    }
+}
 
 export interface SessionAuthUser {
     id: number
@@ -13,17 +43,6 @@ export interface SessionAuthUser {
     image?: string | null
 }
 
-export interface AuthUser {
-    id: number
-    username: string
-    nickname: string
-    roles: UserRoles[]
-}
-
-export interface AuthData {
-    token: string
-    data: AuthUser
-}
 
 // export interface IUserCreatePayload {
 //     email: string
@@ -34,11 +53,11 @@ export interface AuthData {
 //     useVerification: boolean
 // }
 
-export function userHasPermission(user: AuthUser): boolean {
+export function canUserSignIn(user: Auth.User): boolean {
     const roles = user.roles
     return roles.includes(ROLE_MODERATOR) || roles.includes(ROLE_ADMIN)
 }
 
-export function hasPermission(user: AuthUser, role: string): boolean {
+export function hasUserRole(user: Auth.User, role: string): boolean {
     return (user.roles as string[]).includes(role)
 }
