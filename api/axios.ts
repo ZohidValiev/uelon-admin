@@ -3,8 +3,7 @@ import { tokenStore } from "@/types/token"
 import axios, { AxiosInstance, AxiosRequestHeaders } from "axios"
 
 function create(): AxiosInstance {
-    const url = "http://localhost:3000"//process.env.NEXTAUTH_URL
-    console.log("url: ", url)
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL
     const headers: AxiosRequestHeaders = {}
 
     if (tokenStore.hasAccessToken()) {
@@ -12,7 +11,7 @@ function create(): AxiosInstance {
     }
 
     return axios.create({
-        baseURL: `${url}/api`,
+        baseURL: baseUrl,
         withCredentials: true,
         headers,
     })
