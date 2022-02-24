@@ -1,8 +1,7 @@
 
-import { FC, PropsWithChildren } from "react"
+import { FC, HTMLProps } from "react"
 
-type Props = {
-    className?: string
+interface Props extends HTMLProps<HTMLFieldSetElement> {
 }
 
 const Fieldset: FC<Props> = ({ children, className="", ...props }) => {

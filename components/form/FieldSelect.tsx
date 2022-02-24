@@ -1,18 +1,12 @@
 
-import { FC, ChangeEvent, FocusEvent } from "react"
+import { FC, HTMLProps } from "react"
 
-type Props = {
-    name: string
-    value: string|number
+interface Props extends HTMLProps<HTMLSelectElement> {
     label: string
-    labelTitle: string
+    labelTitle?: string
     labelClass?: string
     inputClass?: string
-    readOnly?: boolean
-    required?: boolean
     horizontal?: boolean
-    onChange?: (e: ChangeEvent) => void
-    onBlur?: (e: FocusEvent) => void
 }
 
 const FieldSelect: FC<Props> = ({ 

@@ -1,16 +1,13 @@
 
-import { FC } from "react"
+import { FC, ButtonHTMLAttributes } from "react"
 
-type Props = {
-    value: string
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
-const Button: FC<Props> = ({ value }) => {
+const Button: FC<Props> = ({ value, children, ...props }) => {
 
     return (
-        <button className="button form__button">
-            {value}
-        </button>
+        <button className="button form__button" {...props} >{value}</button>
     )
 }
 

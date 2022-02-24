@@ -1,10 +1,8 @@
 
-import { FC, FormEvent } from "react"
+import { FC, HTMLProps } from "react"
 
-type Props = {
-    className?: string
-    onSubmit: (e: FormEvent) => void
-    [key: string]: any
+interface Props extends HTMLProps<HTMLFormElement> {
+    
 }
 
 const Form: FC<Props> = ({ className="", children, ...props }) => {

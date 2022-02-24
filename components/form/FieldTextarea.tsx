@@ -1,17 +1,11 @@
 
-import { ChangeEvent, FC, FocusEvent } from "react"
+import { FC, HTMLProps } from "react"
 
-type Props = {
-    name: string
-    value: string|number
+interface Props extends HTMLProps<HTMLTextAreaElement> {
     label: string
     labelTitle: string
     labelClass?: string
     inputClass?: string
-    readOnly?: boolean
-    required?: boolean
-    onChange?: (e: ChangeEvent) => void
-    onBlur?: (e: FocusEvent) => void
 }
 
 const FieldTextarea: FC<Props> = ({ 
