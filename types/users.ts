@@ -1,8 +1,16 @@
 
-export const ROLE_USER = "ROLE_USER"
-export const ROLE_MODERATOR = "ROLE_MODERATOR"
-export const ROLE_ADMIN = "ROLE_ADMIN"
-export type UserRoles = typeof ROLE_USER | typeof ROLE_MODERATOR | typeof ROLE_ADMIN
+export enum Status {
+    STATUS_DELETED = 0,
+    STATUS_INACTIVE = 1,
+    STATUS_ACTIVE = 2,
+    STATUS_BLOCKED = 3
+}
+
+export enum Roles {
+    ROLE_USER = "ROLE_USER",
+    ROLE_MODERATOR = "ROLE_MODERATOR",
+    ROLE_ADMIN = "ROLE_ADMIN"
+}
 
 export namespace Entity {
     export interface User {
@@ -25,7 +33,7 @@ export namespace Auth {
         id: number
         username: string
         nickname: string
-        roles: UserRoles[]
+        roles: Roles[]
     }
     
     // Данные возвращаемые сервером при успешной утентификации
@@ -35,22 +43,24 @@ export namespace Auth {
     }
 }
 
-// export namespace Session {
-//     export interface User {
-//         id: number
-//         roles: string[]
-//         email?: string | null
-//         name?: string | null
-//         image?: string | null
-//     }    
-// }
+export namespace UserCreateDialog {
+    export interface Callbacks {
+        onOK: (user: Entity.User) => void | null
+        onError?: (error: any) => void | null
+    }
 
-export namespace Action {
-    export interface CreateUserData {
+    export interface Api {
+        open: (callbacks: Callbacks) => void
+        close: () => void
+    }
+}
+
+export namespace DTO {
+    export interface CreateUser {
         email: string
         nickname: string
-        role: string
-        status: number
+        role: Roles
+        status: Status
         password: string
         useVerification: boolean
     }    
@@ -58,9 +68,26 @@ export namespace Action {
 
 export function canUserLogin(user: Auth.User): boolean {
     const roles = user.roles
-    return roles.includes(ROLE_MODERATOR) || roles.includes(ROLE_ADMIN)
+    return roles.includes(Roles.ROLE_MODERATOR) || roles.includes(Roles.ROLE_ADMIN)
 }
 
 export function hasUserRole(user: Auth.User, role: string): boolean {
     return (user.roles as string[]).includes(role)
+}
+
+export function getRoles(): Array<[Roles, string]> {
+    return [
+        [Roles.ROLE_USER, "Пользователь"],
+        [Roles.ROLE_MODERATOR, "Модератор"],
+        [Roles.ROLE_ADMIN, "Администратор"],
+    ]
+}
+
+export function getStatuses(): Array<[Status, string]> {
+    return [
+        [Status.STATUS_DELETED, "Удален"],
+        [Status.STATUS_INACTIVE, "Неактивен"],
+        [Status.STATUS_ACTIVE, "Активен"],
+        [Status.STATUS_BLOCKED, "Заблокирован"],
+    ]
 }

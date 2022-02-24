@@ -1,8 +1,7 @@
 
-import NextAuth from "next-auth"
+import NextAuth, { Awaitable } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import * as api from "@/api/users"
-import { AxiosResponse } from "axios"
 import { canUserLogin, Auth } from "@/types/users"
 import { tokenStore } from "@/types/token"
 
@@ -24,10 +23,8 @@ export default NextAuth({
                 }
             },
             async authorize({ username, password }) {
-                let res: AxiosResponse<any, any>
                 try {
-                    res = await api.login(username, password)    
-                    return res.data
+                    return api.login(username, password) as any
                 } catch (error) {
                     return null
                 }
