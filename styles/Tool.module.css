@@ -2,20 +2,19 @@
 .toolbar {
     display: flex;
     flex-flow: row nowrap;
-    padding: 4px;
-    background-color: #17a2b8;
+    padding: 0 2px;
+    background-color: #ffe69c;
 }
 
 .toolButton {
     display: flex;
-    background-color: #17a2b8;
+    background-color: #ffe69c;
     border-width: 0;
-    color: #ffffff;
+    color: #17a2b8;
     font-family: inherit;
     font-weight: 500;
     font-size: 1.4rem;
-    padding: .8rem 1.4rem;
-    border-radius: 0.6rem;
+    padding: 1.2rem 1.4rem;
     cursor: pointer;
     transition: .5s;
 }
@@ -23,7 +22,7 @@
     margin-right: 1rem;
 }
 .toolButton__icon {
-    fill: #ffffff;
+    fill: #17a2b8;
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
@@ -31,5 +30,9 @@
     transition: .5s;
 }
 .toolButton:hover {
-    background-color: #66c963;
+    background-color: #17a2b8;
+    color: #ffffff;
+}
+.toolButton:hover > .toolButton__icon {
+    fill: #ffffff;
 }
