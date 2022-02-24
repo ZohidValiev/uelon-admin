@@ -82,7 +82,7 @@ const Auth: FC<AuthProps> = ({ auth, children }) => {
     if (status.authenticated) {
       const user = session.user as Auth.User
 
-      if (hasUserRole(user, auth.role)) {
+      if (hasUserRole(user, (auth.role as unknown) as string)) {
         setAccessGranted(true)
       }  else {
         router.replace("/auth/access-denied")
