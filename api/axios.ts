@@ -1,6 +1,6 @@
 
 import { tokenStore } from "@/types/token"
-import axios, { AxiosInstance, AxiosRequestHeaders } from "axios"
+import axios, { AxiosInstance, AxiosRequestHeaders, AxiosError } from "axios"
 
 function create(): AxiosInstance {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL
@@ -20,31 +20,14 @@ function create(): AxiosInstance {
 
 export const instance = create()
 
+export function axiosHttpCode422Thrower(error: any, otherErrorCallback?: (error: any) => void) {
+    if (axios.isAxiosError(error)) {
+        if (error.code === "422") {
+            throw error
+        }
+    }
 
-// const baseUrl = "http://127.0.0.1:8000"
-
-// export function get(url: string, config?: AxiosRequestConfig<any>) {
-//     return axios.get(`${baseUrl}${url}`, { withCredentials: true, ...(config ?? {}) })
-// }
-
-// export function post(url: string, data?:any, config?: AxiosRequestConfig<any>) {
-//     return axios.post(`${baseUrl}${url}`, data, { withCredentials: true, ...(config ?? {}) })
-// }
-
-// export function put(url: string, data?: any, config?: AxiosRequestConfig<any>) {
-//     return axios.put(`${baseUrl}${url}`, data, { withCredentials: true, ...(config ?? {})})
-// }
-
-// export function patch(url: string, data?: any, config?: AxiosRequestConfig<any>) {
-//     return axios.patch(`${baseUrl}${url}`, data, { 
-//         withCredentials: true, 
-//         headers: {
-//             "Content-Type": "application/merge-patch+json",
-//         },
-//         ...(config ?? {})
-//     })
-// }
-
-// export function remove(url: string, config?: AxiosRequestConfig<any>) {
-//     return axios.delete(`${baseUrl}${url}`, { withCredentials: true, ...(config ?? {}) })
-// }
+    if (otherErrorCallback) {
+        otherErrorCallback(error)
+    }
+}

@@ -1,40 +1,41 @@
 
 import { instance }  from "./axios"
-import { Action } from "../types/users"
+import { DTO, Entity, Auth } from "../types/users"
 
-export async function loadUsers() {
-    return instance.get("/users?_order[id]=desc")
+
+export async function loadUsers(): Promise<Entity.User[]> {
+    return (await instance.get<Entity.User[]>("/users?_order[id]=desc")).data
 }
 
-export async function loadUser(id: number) {
-    return instance.get(`/users/${id}`)
+export async function loadUser(id: number): Promise<Entity.User> {
+    return (await instance.get<Entity.User>(`/users/${id}`)).data
 }
 
-export async function login(email: string, password: string) {
-    return instance.post("/login_check", {
+export async function login(email: string, password: string): Promise<Auth.Data> {
+    return (await instance.post<Auth.Data>("/login_check", {
         email,
         password,
-    })
+    })).data
 }
 
-export async function createUser(data: Action.CreateUserData) {
-    return instance.post(`/users`, data)
+export async function createUser(data: DTO.CreateUser): Promise<Entity.User> {
+    return (await instance.post<Entity.User>(`/users`, data)).data
 }
 
-export async function updateUserNickname(id: number, nickname: string) {
-    return instance.patch(`/users/${id}/nickname`, {
+export async function updateUserNickname(id: number, nickname: string): Promise<Entity.User> {
+    return (await instance.patch<Entity.User>(`/users/${id}/nickname`, {
         value: nickname,
-    })
+    })).data
 }
 
-export async function updateUserStatus(id :number, status: number) {
-    return instance.patch(`/users/${id}/status`, {
+export async function updateUserStatus(id :number, status: number): Promise<Entity.User> {
+    return (await instance.patch<Entity.User>(`/users/${id}/status`, {
         value: status,
-    })
+    })).data
 }
 
-export async function updateUserRole(id: number, role: string) {
-    return instance.patch(`/users/${id}/role`, {
+export async function updateUserRole(id: number, role: string): Promise<Entity.User> {
+    return (await instance.patch<Entity.User>(`/users/${id}/role`, {
         value: role,
-    })
+    })).data
 }
