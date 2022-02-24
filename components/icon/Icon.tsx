@@ -1,15 +1,15 @@
 
-import { FC } from "react"
+import { FC, SVGProps } from "react"
 
-type Props = {
-    title: string
+interface Props extends SVGProps<SVGSVGElement> {
     icon: string
+    title?: string
     className?: string
 }
 
-const Icon: FC<Props> = ({ title, icon, className="icon", ...props }) => {
+const Icon: FC<Props> = ({ children, title, icon, className="icon", ...props }) => {
     return (
-        <svg className={className} {...props}>
+        <svg className={className} {...props} >
             <title>{title}</title>
             <use href={`/images/icons.svg#${icon}`}></use>
         </svg>
