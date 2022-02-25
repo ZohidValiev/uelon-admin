@@ -1,12 +1,14 @@
 
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { useUser } from "@/hooks/users"
 import { useRouter } from "next/router"
 import UserView from "./UserView"
+import { ViewGridSpinner } from "@/components/spinners/view-grid"
 import { _changeNicknameDialog } from "@/components/users/dialogs/change-nickname"
 import { _changeRoleDialog } from "@/components/users/dialogs/change-role"
 import { _changeStatusDialog } from "@/components/users/dialogs/change-status"
 import { _info } from "@/components/info-dialog"
+import { _infoLoader } from "@/components/loaders/info-loader"
 
 
 interface Props {}
@@ -14,6 +16,14 @@ interface Props {}
 const UserViewContainer: FC<Props> = () => {
     const { query } = useRouter()
     const { data:user, error, mutate, isLoading } = useUser(parseInt(query.id as string))
+
+    useEffect(() => {
+        if (isLoading) {
+            _infoLoader.open()    
+        } else {
+            _infoLoader.close()
+        }
+    }, [isLoading])
 
     const handleClickNickname = () => {
         _changeNicknameDialog.open(user, {
@@ -56,7 +66,7 @@ const UserViewContainer: FC<Props> = () => {
     
     if (isLoading) {
         return (
-            <>{"loading"}</>
+            <ViewGridSpinner rows={6} />
         )
     }
 

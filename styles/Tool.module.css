@@ -3,6 +3,7 @@
     display: flex;
     flex-flow: row nowrap;
     background-color: #ffe69c;
+    border-left: 2px solid #ffc107;
 }
 
 .toolButton {

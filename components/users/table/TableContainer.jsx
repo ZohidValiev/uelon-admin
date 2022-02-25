@@ -59,7 +59,9 @@ function TableContainer() {
     }
 
     if (isLoading) {
-        return <TableSpinner columns={5} rows={10} />
+        return (
+            <TableSpinner columns={5} rows={ITEMS_COUNT} />
+        )
     }
 
     const _page = isLoading ? state.prevPage : state.page
