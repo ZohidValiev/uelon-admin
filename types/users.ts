@@ -43,9 +43,21 @@ export namespace Auth {
     }
 }
 
+export namespace UserChangeDialog {
+    export interface Callbacks {
+        onOK: (user: Entity.User) => void
+        onError?: (error: any) => void | null
+    }
+
+    export interface Api {
+        open: (user: Entity.User, callbacks: Callbacks) => void
+        close: () => void
+    }
+}
+
 export namespace UserCreateDialog {
     export interface Callbacks {
-        onOK: (user: Entity.User) => void | null
+        onOK: (user: Entity.User) => void
         onError?: (error: any) => void | null
     }
 
