@@ -2,11 +2,12 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 31rem 1fr;
-    grid-gap: .4rem 0;
+    grid-gap: .5rem 0;
     font-size: 1.4rem;
     font-weight: 500;
 }
 .viewGrid__name {
+    font-size: 1.5rem;
     background-color: #ffe69c;
     padding: .8rem;
 }

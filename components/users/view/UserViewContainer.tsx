@@ -17,7 +17,7 @@ const UserViewContainer: FC<Props> = () => {
 
     const handleClickNickname = () => {
         _changeNicknameDialog.open(user, {
-            onOk(user) {
+            onOK(user) {
                 mutate(user, false)
             },
             onError(error) {
