@@ -1,5 +1,5 @@
 
-import { FC, useEffect } from "react"
+import { FC, useEffect, useCallback } from "react"
 import { useUser } from "@/hooks/users"
 import { useRouter } from "next/router"
 import UserView from "./UserView"
@@ -25,7 +25,7 @@ const UserViewContainer: FC<Props> = () => {
         }
     }, [isLoading])
 
-    const handleClickNickname = () => {
+    const handleClickNickname = useCallback(() => {
         _changeNicknameDialog.open(user, {
             onOK(user) {
                 mutate(user, false)
@@ -34,29 +34,29 @@ const UserViewContainer: FC<Props> = () => {
                 _info.openError("Ошибка", "error")
             },
         })
-    }
+    }, [user])
 
-    const handleClickRole = () => {
+    const handleClickRole = useCallback(() => {
         _changeRoleDialog.open(user, {
-            onOk(user) {
+            onOK(user) {
                 mutate(user, false)
             },
             onError(error) {
                 _info.openError("Ошибка", "error")
             }
         })
-    }
+    }, [user])
 
-    const handleClickStatus = () => {
+    const handleClickStatus = useCallback(() => {
         _changeStatusDialog.open(user, {
-            onOk(user) {
+            onOK(user) {
                 mutate(user, false)
             },
             onError(error) {
                 _info.openError("Ошибка", "error")
             }
         })
-    }
+    }, [user])
 
     if (error) {
         return (
