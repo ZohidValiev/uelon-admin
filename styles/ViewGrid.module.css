@@ -10,6 +10,7 @@
     font-size: 1.5rem;
     background-color: #ffe69c;
     padding: .8rem;
+    border-left: 2px solid #ffc107;
 }
 .viewGrid__value {
     display: flex;
