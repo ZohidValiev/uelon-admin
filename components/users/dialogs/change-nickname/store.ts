@@ -1,6 +1,6 @@
 
 import { makeObservable, observable, action, runInAction, autorun } from "mobx"
-import { Entity, UserChangeDialog } from "@/types/users"
+import { Entity, UserPropertyChangeDialog } from "@/types/users"
 import { axiosHttpCode422Thrower } from "@/api/axios"
 import * as api from "@/api/users"
 import { enableStaticRendering } from "mobx-react"
@@ -12,7 +12,7 @@ class Store
     public visible: boolean = false
     public submited: boolean = false
     private user: Entity.User | null = null
-    private callbacks: UserChangeDialog.Callbacks | null = null
+    private callbacks: UserPropertyChangeDialog.Callbacks | null = null
 
     constructor() 
     {
@@ -24,7 +24,7 @@ class Store
         })
     }
 
-    open(user: Entity.User, callbacks: UserChangeDialog.Callbacks) 
+    open(user: Entity.User, callbacks: UserPropertyChangeDialog.Callbacks) 
     {
         this.visible = true
         this.user = user

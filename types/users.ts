@@ -49,7 +49,7 @@ export namespace Auth {
     }
 }
 
-export namespace UserChangeDialog {
+export namespace UserPropertyChangeDialog {
     export interface Callbacks {
         onOK: (user: Entity.User) => void
         onError?: (error: any) => void | null

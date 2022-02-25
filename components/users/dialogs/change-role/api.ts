@@ -1,9 +1,9 @@
 
-import { UserChangeDialog } from "@/types/users"
+import { UserPropertyChangeDialog } from "@/types/users"
 import store from "./store"
 
 
-const api: UserChangeDialog.Api = {
+const api: UserPropertyChangeDialog.Api = {
     open(user, callbacks) {
         store.open(user, callbacks)
     },
