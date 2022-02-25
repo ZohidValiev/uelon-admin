@@ -7,6 +7,7 @@ import { _info } from "@/components/info-dialog"
 import { _infoLoader } from "@/components/loaders/info-loader"
 import Table from "./Table"
 import { PaginationBlock, Pagination } from "@/components/pagination"
+import { TableSpinner } from "@/components/spinners/table"
 
 
 function TableContainer() {
@@ -47,10 +48,10 @@ function TableContainer() {
     }, [users, state, mutate, em])
 
     useEffect(() => {
-        if (isValidating) {
+        if (isLoading) {
             _infoLoader.open()
         }
-    }, [isValidating])
+    }, [isLoading])
 
     if (error) {
         console.error(error)
@@ -58,7 +59,7 @@ function TableContainer() {
     }
 
     if (isLoading) {
-        return "Loading"
+        return <TableSpinner columns={5} rows={10} />
     }
 
     const _page = isLoading ? state.prevPage : state.page
