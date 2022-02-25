@@ -1,6 +1,6 @@
 
 import { instance }  from "./axios"
-import { DTO, Entity, Auth } from "../types/users"
+import { DTO, Entity, Auth, Roles } from "../types/users"
 
 
 export async function loadUsers(): Promise<Entity.User[]> {
@@ -34,7 +34,7 @@ export async function updateUserStatus(id :number, status: number): Promise<Enti
     })).data
 }
 
-export async function updateUserRole(id: number, role: string): Promise<Entity.User> {
+export async function updateUserRole(id: number, role: Roles): Promise<Entity.User> {
     return (await instance.patch<Entity.User>(`/users/${id}/role`, {
         value: role,
     })).data
