@@ -53,7 +53,7 @@ class Store
             const user = await api.updateUserNickname(this.user.id, nickname)    
             this._onOK(user)
         } catch (error) {
-            axiosHttpCode422Thrower(error, (error, isAxiosError) => {
+            axiosHttpCode422Thrower(error, (error) => {
                 this._onError(error)
             })
         }
