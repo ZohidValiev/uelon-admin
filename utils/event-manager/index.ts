@@ -1,6 +1,3 @@
 
-import EventManager from "./EventManager"
-
-const eventManager = new EventManager()
-
-export default eventManager
+export { default as useEventManager } from "./hook";
+export { default as withEventManager } from "./hoc"
