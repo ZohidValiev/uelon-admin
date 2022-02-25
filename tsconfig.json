@@ -8,6 +8,7 @@
       "@/styles/*": ["styles/*"],
       "@/api/*": ["api/*"],
       "@/types/*": ["types/*"],
+      "@/events/*": ["events/*"],
     },
     "target": "es5",
     "lib": [
