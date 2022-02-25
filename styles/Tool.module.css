@@ -2,7 +2,6 @@
 .toolbar {
     display: flex;
     flex-flow: row nowrap;
-    padding: 0 2px;
     background-color: #ffe69c;
 }
 
