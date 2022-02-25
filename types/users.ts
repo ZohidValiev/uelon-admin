@@ -12,6 +12,12 @@ export enum Roles {
     ROLE_ADMIN = "ROLE_ADMIN"
 }
 
+export const ROLES_ARRAY: readonly Roles[] = [
+    Roles.ROLE_USER,
+    Roles.ROLE_MODERATOR,
+    Roles.ROLE_ADMIN,
+]
+
 export namespace Entity {
     export interface User {
         id: number,
@@ -85,6 +91,18 @@ export function canUserLogin(user: Auth.User): boolean {
 
 export function hasUserRole(user: Auth.User, role: string): boolean {
     return (user.roles as string[]).includes(role)
+}
+
+export function getUserRole(user: Entity.User): Roles {
+    if (user.roles.includes(Roles.ROLE_ADMIN)) {
+        return Roles.ROLE_ADMIN
+    }
+    
+    if (user.roles.includes(Roles.ROLE_MODERATOR)) {
+        return Roles.ROLE_MODERATOR
+    }
+    
+    return Roles.ROLE_USER
 }
 
 export function getRoles(): Array<[Roles, string]> {
