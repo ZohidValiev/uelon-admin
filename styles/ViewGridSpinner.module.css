@@ -1,0 +1,17 @@
+.viewGridSpinner {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 31rem 1fr;
+    grid-gap: .5rem 0;
+    background-color: #ffffff;
+}
+.viewGridSpinner__name {
+    background-color: rgba(0, 0, 0, .3);
+    height: 3.7rem;
+}
+.viewGridSpinner__value {
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-left-width: 0;
+    height: 3.7;
+    background-color: rgba(0, 0, 0, .075);
+}
