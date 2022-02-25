@@ -1,10 +1,12 @@
 
 import { tokenStore } from "@/types/token"
-import axios, { AxiosInstance, AxiosRequestHeaders, AxiosError } from "axios"
+import axios, { AxiosInstance, AxiosRequestHeaders } from "axios"
 
 function create(): AxiosInstance {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL
-    const headers: AxiosRequestHeaders = {}
+    const headers: AxiosRequestHeaders = {
+        "Content-Type": "application/merge-patch+json"
+    }
 
     if (tokenStore.hasAccessToken()) {
         headers["Authorization"] = `Bearer ${tokenStore.getAccessToken()}`
