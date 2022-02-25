@@ -18,6 +18,13 @@ export const ROLES_ARRAY: readonly Roles[] = [
     Roles.ROLE_ADMIN,
 ]
 
+export const STATUSES_ARRAY: readonly Status[] = [
+    Status.STATUS_DELETED,
+    Status.STATUS_INACTIVE,
+    Status.STATUS_ACTIVE,
+    Status.STATUS_BLOCKED,
+]
+
 export namespace Entity {
     export interface User {
         id: number,
