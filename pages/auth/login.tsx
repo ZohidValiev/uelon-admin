@@ -5,7 +5,7 @@ import { Panel } from "@/components/panel"
 import { Form } from "@/components/auth/login"
 import { useRouter } from "next/router"
 import { PageLoader } from "@/components/loaders/page-loader"
-import { guestOnly } from "@/components/hoc/security"
+import { guestOnly } from "@/components/hoc"
 
 
 type Props = {
