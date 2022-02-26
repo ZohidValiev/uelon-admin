@@ -1,6 +1,7 @@
 .paginationBlock {
     padding: 1.2rem 2.2rem;
     background-color: #ffe69ca1;
+    border-bottom: 2px solid #ffc107;
     width: 100%;
     display: flex;
     justify-content: center;
