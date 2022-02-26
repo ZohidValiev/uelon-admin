@@ -15,7 +15,7 @@ const InfoLoader: FC = () => {
     return (
         <Portal>
             <div className={styles.infoLoader}>
-                <Loader />
+                <Loader size={24} />
                 <span className={styles.infoLoader__message}>загрузка...</span>
             </div>
         </Portal>
