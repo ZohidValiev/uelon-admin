@@ -1,11 +1,12 @@
 
+import { FC } from "react"
 import { observer } from "mobx-react"
 import { Portal } from "@/components/hoc"
 import { Loader } from "@/components/loaders/loader"
 import store from "./store"
 import styles from "@/styles/InfoLoader.module.css"
 
-function InfoLoader() {
+const InfoLoader: FC = () => {
 
     if (!store.visible) {
         return null
