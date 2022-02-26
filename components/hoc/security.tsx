@@ -14,7 +14,7 @@ type GuestOnyOptions = {
     spinner?: ComponentType
 }
 
-export function guestOnly<P = {}>(
+export default function guestOnly<P = {}>(
     Page: NextPage<P>, 
     { path = "/", replace = true, spinner }: GuestOnyOptions
 ): NextPage<P> {
