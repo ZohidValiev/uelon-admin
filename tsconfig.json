@@ -6,9 +6,11 @@
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"],
       "@/styles/*": ["styles/*"],
+      "@/public/*": ["public/*"],
       "@/api/*": ["api/*"],
       "@/types/*": ["types/*"],
-      "@/events/*": ["events/*"],
+      // "@/events/*": ["events/*"],
+      "@/events": ["events/index.ts"],
     },
     "target": "es5",
     "lib": [
