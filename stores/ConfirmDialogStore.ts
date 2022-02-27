@@ -1,9 +1,10 @@
 
 import { makeObservable, action, observable } from "mobx"
-import { Callbacks, API, Properties } from "./types"
+import { Callbacks, API, Store } from "@/types/confirm-dialog"
 
 
-class Store implements API, Callbacks, Properties {
+class ConfirmDialogStore implements API, Store {
+
     public visible: boolean = false
     public content: string | null = null
     private callbacks: Callbacks | null = null
@@ -49,9 +50,7 @@ class Store implements API, Callbacks, Properties {
     }
 }
 
-const _store = new Store()
+const store = new ConfirmDialogStore()
 
-export const api: API = _store
-
-const store: Callbacks & Properties = _store
-export default store
+export default store as Store
+export const api: API = store

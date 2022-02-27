@@ -1,6 +1,6 @@
 
-import { API } from "./types"
-import { api as _api } from "./store"
+import { API } from "@/types/confirm-dialog"
+import { api as _api } from "@/stores/ConfirmDialogStore"
 
 
 const api: API = {

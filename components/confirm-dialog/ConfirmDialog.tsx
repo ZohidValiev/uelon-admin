@@ -3,7 +3,7 @@ import { FC } from "react"
 import { observer } from "mobx-react"
 import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/dialog"
-import store from "./store"
+import store from "@/stores/ConfirmDialogStore"
 
 const ConfirmDialog: FC = () => {
 
