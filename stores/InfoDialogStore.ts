@@ -2,14 +2,15 @@
 import { ReactNode } from "react"
 import { makeObservable, observable, action } from "mobx"
 import { enableStaticRendering } from "mobx-react"
+import { Store, API } from "@/types/info-dialog"
 
 enableStaticRendering(typeof window === "undefined")
 
-class Store 
+class InfoDialogStore implements Store, API
 {
-    type: string = null
-    title: string   = null
-    content: string|ReactNode = null
+    type: string | null = null
+    title: string | null = null
+    content: string | ReactNode | null = null
     visible: boolean = false
 
     constructor() {
@@ -43,4 +44,6 @@ class Store
     }
 }
 
-export default new Store()
+const store = new InfoDialogStore()
+export default store as Store
+export const api: API = store

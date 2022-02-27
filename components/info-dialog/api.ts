@@ -1,16 +1,18 @@
 
 import { ReactNode } from "react"
-import store from "./store"
+import { API } from "@/types/info-dialog"
+import { api as _api } from "@/stores/InfoDialogStore"
 
-export default {
-    openInfo(title: string, content: string|ReactNode) {
-        store.openInfo(title, content)
+const api: API = {
+    openInfo(title: string, content: string | ReactNode) {
+        _api.openInfo(title, content)
     },
-    openError(title: string, content: string|ReactNode) {
-        store.openError(title, content)
+    openError(title: string, content: string | ReactNode) {
+        _api.openError(title, content)
     },
     close() {
-        store.close()
+        _api.close()
     }
 }
 
+export default api

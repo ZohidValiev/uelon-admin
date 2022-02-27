@@ -2,7 +2,7 @@
 import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/dialog"
 import { observer } from "mobx-react"
-import store from "./store"
+import store from "@/stores/InfoDialogStore"
 
 
 const InfoDialog = observer(() => {
