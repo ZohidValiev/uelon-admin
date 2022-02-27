@@ -1,6 +1,9 @@
 
 import { makeObservable, action, observable } from "mobx"
 import { Callbacks, API, Store } from "@/types/confirm-dialog"
+import { enableStaticRendering } from "mobx-react"
+
+enableStaticRendering(typeof window === "undefined")
 
 
 class ConfirmDialogStore implements API, Store {
