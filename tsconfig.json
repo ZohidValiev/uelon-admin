@@ -9,7 +9,7 @@
       "@/public/*": ["public/*"],
       "@/api/*": ["api/*"],
       "@/types/*": ["types/*"],
-      // "@/events/*": ["events/*"],
+      "@/stores/*": ["stores/*"],
       "@/events": ["events/index.ts"],
     },
     "target": "es5",
