@@ -1,12 +1,13 @@
 
-import store from "./store"
+import { API } from "@/types/info-loader"
+import { api as _api } from "@/stores/InfoLoaderStore"
 
-const api = {
+const api: API = {
     open() {
-        store.open()
+        _api.open()
     },
     close() {
-        store.close()
+        _api.close()
     },
 }
 

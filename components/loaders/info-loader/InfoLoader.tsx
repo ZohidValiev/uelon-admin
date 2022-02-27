@@ -3,7 +3,7 @@ import { FC } from "react"
 import { observer } from "mobx-react"
 import { Portal } from "@/components/hoc"
 import { Loader } from "@/components/loaders/loader"
-import store from "./store"
+import store from "@/stores/InfoLoaderStore"
 import styles from "@/styles/InfoLoader.module.css"
 
 const InfoLoader: FC = () => {
