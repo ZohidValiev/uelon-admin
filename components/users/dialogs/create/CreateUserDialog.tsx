@@ -5,7 +5,7 @@ import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/dialog"
 import { observer } from "mobx-react"
 import { CreateForm } from "@/components/users/froms"
-import store from "./store"
+import store from "@/stores/users/UserCreateDialogStore"
 
 
 function CreateUserDialog() {

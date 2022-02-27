@@ -1,13 +1,13 @@
 
-import { UserCreateDialog } from "@/types/users"
-import store from "./store"
+import { API, Callbacks } from "@/types/users/user-create-dialog"
+import { api as _api } from "@/stores/users/UserCreateDialogStore"
 
-const api: UserCreateDialog.Api = {
-    open(callbacks: UserCreateDialog.Callbacks) {
-        store.open(callbacks)
+const api: API = {
+    open(callbacks: Callbacks) {
+        _api.open(callbacks)
     },
     close() {
-        store.close()
+        _api.close()
     }
 }
 
