@@ -1,11 +1,14 @@
 
-import store from "./store"
+import { API } from "@/types/message"
+import { api as _api } from "@/stores/MessageStore"
 
-export default {
+ const api: API = {
     open(message: string) {
-        store.open(message)
+        _api.open(message)
     },
     close() {
-        store.close()
+        _api.close()
     }
 }
+
+export default api

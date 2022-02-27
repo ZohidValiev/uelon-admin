@@ -1,10 +1,12 @@
 
 import { makeObservable, observable, action } from "mobx"
 import { enableStaticRendering } from "mobx-react"
+import { Store, API } from "@/types/message"
 
 enableStaticRendering(typeof window === "undefined")
 
-class Store {
+class MessageStore implements Store, API {
+
     public visible: boolean = false
     private message: string | null = null
 
@@ -31,5 +33,6 @@ class Store {
     }
 }
 
-const store = new Store()
-export default store
+const store = new MessageStore()
+export default store as Store
+export const api: API = store

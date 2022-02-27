@@ -1,7 +1,7 @@
 
 import { FC } from "react"
 import { Portal } from "@/components/hoc"
-import store from "./store"
+import store from "@/stores/MessageStore"
 import styles from "@/styles/Message.module.css"
 
 const Message: FC = () => {
