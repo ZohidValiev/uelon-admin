@@ -1,6 +1,6 @@
 
 import { FC } from "react"
-import { Loader } from "@/components/loaders/loader"
+import { Loader } from "@/components/common/loaders/loader"
 import styles from "@/styles/PageLoader.module.css"
 
 type Props = {

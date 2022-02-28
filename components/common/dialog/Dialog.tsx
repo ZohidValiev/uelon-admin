@@ -1,20 +1,19 @@
 
-import { FC, PropsWithChildren } from "react"
-import { Loader } from "@/components/loaders/loader"
+import { FC, ButtonHTMLAttributes } from "react"
+import { Loader } from "@/components/common/loaders/loader"
 import styles from "@/styles/Dialog.module.css"
 
-type Props = {
+interface Props {
     title: string
     type?: string
     loading?: boolean
     buttons: ButtonProps[]
 }
 
-type ButtonProps = {
-    [key: string]: any
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
-const Dialog: FC<PropsWithChildren<Props>> = ({ title, type = "", children, loading = false, buttons = [] }) => {
+const Dialog: FC<Props> = ({ title, type = "", children, loading = false, buttons = [] }) => {
 
     const dialogClass = getDialogTypeClass(type)
     const dialogTitleClass = getDialogTitleTypeClass(type)

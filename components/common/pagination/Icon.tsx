@@ -1,6 +1,6 @@
 
 import { FC } from "react"
-import { Icon as _Icon } from "@/components/icon"
+import { Icon as _Icon } from "@/components/common/icon"
 import styles from "@/styles/Pagination.module.css"
 
 interface Props {

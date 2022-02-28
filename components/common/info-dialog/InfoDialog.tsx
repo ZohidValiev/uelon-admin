@@ -1,6 +1,6 @@
 
 import { Portal } from "@/components/hoc"
-import { Dialog } from "@/components/dialog"
+import { Dialog } from "@/components/common/dialog"
 import { observer } from "mobx-react"
 import store from "@/stores/InfoDialogStore"
 

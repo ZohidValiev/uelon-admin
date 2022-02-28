@@ -1,6 +1,6 @@
 
 import { FC } from "react"
-import { Layout } from '@/components/layout'
+import { Layout } from '@/components/common/layout'
 import styles from '@/styles/Page.module.css'
 
 
