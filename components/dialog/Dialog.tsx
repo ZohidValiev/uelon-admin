@@ -34,7 +34,7 @@ const Dialog: FC<PropsWithChildren<Props>> = ({ title, type = "", children, load
                         <span className={styles.dialog__titleText}>
                             {title}
                         </span>
-                        { loading && <Loader /> }
+                        { loading && <Loader size={24}/> }
                     </div>
                 )}
                 <div className={styles.dialog__body}>
