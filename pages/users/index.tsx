@@ -1,7 +1,7 @@
 
 import { GetServerSideProps } from "next"
 import { AuthNextPage, AuthRole } from "@/types/pages"
-import { Page } from "@/components/page"
+import { Page } from "@/components/common/page"
 import { UserToolBar } from "@/components/users/tool-bar"
 import { TableContainer } from "@/components/users/table"
 import { Tabs as UserTabs } from "@/components/users/tabs"

@@ -6,15 +6,14 @@ import '@/styles/block.css'
 import '@/styles/form.css'
 import '@/styles/icon.css'
 import '@/styles/loading.css'
-import { ConfirmDialog } from "@/components/confirm-dialog"
-import { Message } from '@/components/message'
-import { InfoDialog } from "@/components/info-dialog"
-import { InfoLoader } from "@/components/loaders/info-loader"
-import { m_useSWRCompleted } from "@/hooks/swr-completed"
+import { ConfirmDialog } from "@/components/common/confirm-dialog"
+import { Message } from '@/components/common/message'
+import { InfoDialog } from "@/components/common/info-dialog"
+import { InfoLoader } from "@/components/common/loaders/info-loader"
 import { useSession } from "@/hooks/session"
 import { AuthType, AuthNextPage } from "@/types/pages"
 import { NextPage } from "next"
-import { PageLoader } from "@/components/loaders/page-loader"
+import { PageLoader } from "@/components/common/loaders/page-loader"
 import { FC, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { Auth, hasUserRole } from "@/types/users"

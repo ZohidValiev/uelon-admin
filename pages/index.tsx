@@ -1,7 +1,7 @@
 
 import {} from "next"
 import Link from "next/link"
-import Layout from '@/components/layout'
+import { Layout } from '@/components/common/layout'
 import { AuthNextPage } from "@/types/pages"
 
 
