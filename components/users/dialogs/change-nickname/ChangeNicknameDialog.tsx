@@ -1,7 +1,7 @@
 
 import { useCallback } from "react"
 import { Portal } from "@/components/hoc"
-import { Dialog } from "@/components/dialog"
+import { Dialog } from "@/components/common/dialog"
 import { observer } from "mobx-react"
 import * as api from "@/api/users"
 import { ChangeNicknameForm } from "@/components/users/froms"

@@ -1,5 +1,5 @@
 
-import { Icon } from "@/components/icon"
+import { Icon } from "@/components/common/icon"
 import { Status } from "@/types/users"
 import { FC } from "react"
 

@@ -1,5 +1,5 @@
 
-import { Form as _Form, Fieldset, FormRow, FieldInput, FieldSelect } from "@/components/form"
+import { Form as _Form, Fieldset, FormRow, FieldInput, FieldSelect } from "@/components/common/form"
 import { ChangeEventHandler, CSSProperties, FC, FocusEventHandler, FormEventHandler, HTMLProps } from "react"
 import { Errors, Fields } from "./types"
 import * as users from "@/types/users"

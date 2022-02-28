@@ -3,12 +3,12 @@ import { FC, useEffect, useCallback } from "react"
 import { useUser } from "@/hooks/users"
 import { useRouter } from "next/router"
 import UserView from "./UserView"
-import { ViewGridSpinner } from "@/components/spinners/view-grid"
+import { ViewGridSpinner } from "@/components/common/spinners/view-grid"
 import { _changeNicknameDialog } from "@/components/users/dialogs/change-nickname"
 import { _changeRoleDialog } from "@/components/users/dialogs/change-role"
 import { _changeStatusDialog } from "@/components/users/dialogs/change-status"
-import { _info } from "@/components/info-dialog"
-import { _infoLoader } from "@/components/loaders/info-loader"
+import { _info } from "@/components/common/info-dialog"
+import { _infoLoader } from "@/components/common/loaders/info-loader"
 
 
 interface Props {}

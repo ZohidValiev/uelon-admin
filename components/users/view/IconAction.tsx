@@ -1,6 +1,6 @@
 
 import { FC, MouseEventHandler } from "react"
-import { Icon } from "@/components/icon"
+import { Icon } from "@/components/common/icon"
 
 interface Props {
     onClick: MouseEventHandler

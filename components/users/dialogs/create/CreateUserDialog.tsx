@@ -2,7 +2,7 @@
 import { useCallback } from "react"
 import * as users from "@/types/users"
 import { Portal } from "@/components/hoc"
-import { Dialog } from "@/components/dialog"
+import { Dialog } from "@/components/common/dialog"
 import { observer } from "mobx-react"
 import { CreateForm } from "@/components/users/froms"
 import store from "./store"

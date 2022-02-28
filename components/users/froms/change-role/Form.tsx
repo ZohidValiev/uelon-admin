@@ -1,7 +1,7 @@
 
 import { FC, ChangeEventHandler, FocusEventHandler, FormEventHandler } from "react"
 import { Roles, getRoles } from "@/types/users"
-import { Form as _Form, FormRow, FieldSelect } from "@/components/form"
+import { Form as _Form, FormRow, FieldSelect } from "@/components/common/form"
 
 interface Props {
     id: string

@@ -2,7 +2,7 @@
 import { FC, useCallback } from "react"
 import { useEventManager } from "@/utils/event-manager"
 import { UserEvent } from "@/events"
-import { ToolBar, AddToolButton } from "@/components/tool"
+import { ToolBar, AddToolButton } from "@/components/common/tool"
 import { _createUserDialog } from "@/components/users/dialogs/create"
 
 

@@ -1,6 +1,6 @@
 import { FC, ChangeEventHandler, FocusEventHandler, FormEventHandler } from "react"
 import { Status, getStatuses } from "@/types/users"
-import { Form as _Form, FormRow, FieldSelect } from "@/components/form"
+import { Form as _Form, FormRow, FieldSelect } from "@/components/common/form"
 
 
 interface Props {

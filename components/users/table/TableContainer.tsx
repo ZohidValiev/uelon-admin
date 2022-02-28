@@ -3,11 +3,11 @@ import { useState, useCallback, useEffect, FC } from "react"
 import { UserEvent, createEventAlias } from "@/events"
 import { useUsers } from "@/hooks/users"
 import { useEventManager } from "@/utils/event-manager"
-import { _info } from "@/components/info-dialog"
-import { _infoLoader } from "@/components/loaders/info-loader"
+import { _info } from "@/components/common/info-dialog"
+import { _infoLoader } from "@/components/common/loaders/info-loader"
 import Table from "./Table"
-import { PaginationBlock, Pagination } from "@/components/pagination"
-import { TableSpinner } from "@/components/spinners/table"
+import { PaginationBlock, Pagination } from "@/components/common/pagination"
+import { TableSpinner } from "@/components/common/spinners/table"
 
 
 interface State {
