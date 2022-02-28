@@ -1,6 +1,6 @@
 
 import { memo, FC, HTMLAttributes } from "react"
-import { Icon } from "@/components/icon"
+import { Icon } from "@/components/common/icon"
 import styles from "@/styles/Tool.module.css"
 
 
