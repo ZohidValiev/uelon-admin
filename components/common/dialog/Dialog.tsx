@@ -10,7 +10,8 @@ interface Props {
     buttons: ButtonProps[]
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps /*extends ButtonHTMLAttributes<HTMLButtonElement>*/ {
+    [key: string]: any
 }
 
 const Dialog: FC<Props> = ({ title, type = "", children, loading = false, buttons = [] }) => {
