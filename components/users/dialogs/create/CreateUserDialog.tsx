@@ -5,13 +5,16 @@ import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/dialog"
 import { observer } from "mobx-react"
 import { CreateForm } from "@/components/users/froms"
-import store from "@/stores/users/UserCreateDialogStore"
+import store from "./store"
+import * as api from "@/api/users"
 
 
 function CreateUserDialog() {
     
     const handleSubmit = useCallback(async (data: users.DTO.CreateUser) => {
-        store.createUser(data)
+        store.send(() => {
+            return api.createUser(data)
+        })
     }, [])
 
     if (!store.visible) {

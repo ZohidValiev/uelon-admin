@@ -1,9 +1,10 @@
 
-import { API, Callbacks } from "@/types/users/user-create-dialog"
-import { api as _api } from "@/stores/users/UserCreateDialogStore"
+import { API } from "@/types/create-dialog"
+import { api as _api } from "./store"
+import { Entity } from "@/types/users"
 
-const api: API = {
-    open(callbacks: Callbacks) {
+const api: API<Entity.User> = {
+    open(callbacks) {
         _api.open(callbacks)
     },
     close() {
