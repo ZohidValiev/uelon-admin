@@ -6,12 +6,15 @@ import { observer } from "mobx-react"
 import { ChangeStatusForm } from "@/components/users/froms"
 import store from "./store"
 import { Status } from "@/types/users"
+import * as api from "@/api/users"
 
 
 const ChangeStatusDialog: FC = () => {
     
     const handleSubmit = useCallback(async (status: Status) => {
-        store.update(status)
+        store.send(async (user) => {
+            return api.updateUserStatus(user.id, status)
+        })
     }, [])
 
     if (!store.visible) {
@@ -44,7 +47,7 @@ const ChangeStatusDialog: FC = () => {
             >
                 <ChangeStatusForm 
                     id={formId}
-                    value={store.getUserStatus()}
+                    value={store.entity.status}
                     disabled={store.submited}
                     onSubmit={handleSubmit}
                 />
