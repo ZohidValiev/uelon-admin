@@ -3,6 +3,7 @@ import { useCallback } from "react"
 import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/dialog"
 import { observer } from "mobx-react"
+import * as api from "@/api/users"
 import { ChangeNicknameForm } from "@/components/users/froms"
 import store from "./store"
 
@@ -10,7 +11,9 @@ import store from "./store"
 const ChangeNicknameDialog = observer(() => {
     
     const handleSubmit = useCallback(async (nickname: string) => {
-        store.update(nickname)
+        store.send(async (user) => {
+            return api.updateUserNickname(user.id, nickname)
+        })
     }, [])
 
     if (!store.visible) {
@@ -43,7 +46,7 @@ const ChangeNicknameDialog = observer(() => {
             >
                 <ChangeNicknameForm 
                     id={formId}
-                    value={store.getUserNickname()}
+                    value={store.entity.nickname}
                     disabled={store.submited}
                     onSubmit={handleSubmit}
                 />
