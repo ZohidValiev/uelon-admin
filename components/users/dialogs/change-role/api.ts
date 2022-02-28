@@ -1,14 +1,15 @@
 
-import { UserPropertyChangeDialog } from "@/types/users"
-import store from "./store"
+import { Entity } from "@/types/users"
+import { API } from "@/types/update-dialog"
+import { api as _api } from "./store"
 
 
-const api: UserPropertyChangeDialog.Api = {
+const api: API<Entity.User> = {
     open(user, callbacks) {
-        store.open(user, callbacks)
+        _api.open(user, callbacks)
     },
     close() {
-        store.close()
+        _api.close()
     }
 }
 

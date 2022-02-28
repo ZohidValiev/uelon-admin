@@ -5,13 +5,16 @@ import { Dialog } from "@/components/dialog"
 import { observer } from "mobx-react"
 import { ChangeRoleForm } from "@/components/users/froms"
 import store from "./store"
-import { Roles } from "@/types/users"
+import { getUserRole, Roles } from "@/types/users"
+import * as api from "@/api/users"
 
 
 function ChangeRoleDialog() {
     
     const handleSubmit = useCallback(async (role: Roles) => {
-        store.update(role)
+        store.send(async (user) => {
+            return api.updateUserRole(user.id, role)
+        })
     }, [])
 
     if (!store.visible) {
@@ -44,7 +47,7 @@ function ChangeRoleDialog() {
             >
                 <ChangeRoleForm 
                     id={formId}
-                    value={store.getUserRole()}
+                    value={getUserRole(store.entity)}
                     disabled={store.submited}
                     onSubmit={handleSubmit}
                 />
