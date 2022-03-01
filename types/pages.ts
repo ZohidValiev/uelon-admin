@@ -3,10 +3,7 @@
 import { NextPage } from "next"
 import { Roles } from "./users"
 
-export enum AuthRole {
-    ROLE_MODERATOR = Roles.ROLE_MODERATOR,
-    ROLE_ADMIN = Roles.ROLE_ADMIN
-}
+export type AuthRole = Roles.ROLE_MODERATOR | Roles.ROLE_ADMIN
 
 export interface AuthType {
     role: AuthRole
