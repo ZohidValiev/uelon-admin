@@ -56,30 +56,6 @@ export namespace Auth {
     }
 }
 
-export namespace UserPropertyChangeDialog {
-    export interface Callbacks {
-        onOK: (user: Entity.User) => void
-        onError?: (error: any) => void | null
-    }
-
-    export interface Api {
-        open: (user: Entity.User, callbacks: Callbacks) => void
-        close: () => void
-    }
-}
-
-export namespace UserCreateDialog {
-    export interface Callbacks {
-        onOK: (user: Entity.User) => void
-        onError?: (error: any) => void | null
-    }
-
-    export interface Api {
-        open: (callbacks: Callbacks) => void
-        close: () => void
-    }
-}
-
 export namespace DTO {
     export interface CreateUser {
         email: string
@@ -112,7 +88,7 @@ export function getUserRole(user: Entity.User): Roles {
     return Roles.ROLE_USER
 }
 
-export function getRoles(): Array<[Roles, string]> {
+export function getRoles(): ReadonlyArray<[Roles, string]> {
     return [
         [Roles.ROLE_USER, "Пользователь"],
         [Roles.ROLE_MODERATOR, "Модератор"],
@@ -120,7 +96,7 @@ export function getRoles(): Array<[Roles, string]> {
     ]
 }
 
-export function getStatuses(): Array<[Status, string]> {
+export function getStatuses(): ReadonlyArray<[Status, string]> {
     return [
         [Status.STATUS_DELETED, "Удален"],
         [Status.STATUS_INACTIVE, "Неактивен"],
