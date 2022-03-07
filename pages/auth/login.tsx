@@ -1,10 +1,10 @@
 
 import { NextPage, GetServerSideProps } from "next"
 import { getCsrfToken, getSession } from "next-auth/react"
-import { Panel } from "@/components/panel"
+import { Panel } from "@/components/common/panel"
 import { Form } from "@/components/auth/login"
 import { useRouter } from "next/router"
-import { PageLoader } from "@/components/loaders/page-loader"
+import { PageLoader } from "@/components/common/loaders/page-loader"
 import { guestOnly } from "@/components/hoc"
 
 

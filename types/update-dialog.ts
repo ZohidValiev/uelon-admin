@@ -1,8 +1,9 @@
 
-export interface Store<E> {
+export interface Store<E, Data={}> {
     visible: boolean
     submited: boolean
     entity: E
+    data: Data | null
     send(endpoint: Endpoint<E>): void
     close: () => void
 }
@@ -12,8 +13,8 @@ export interface Callbacks<E> {
     onError?: (error: any) => void
 }
 
-export interface API<E> {
-    open: (entity: E, callbacks: Callbacks<E>) => void
+export interface API<E, Data={}> {
+    open: (entity: E, callbacks: Callbacks<E>, data?: Data) => void
     close: () => void
 }
 

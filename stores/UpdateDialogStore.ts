@@ -6,11 +6,12 @@ import { enableStaticRendering } from "mobx-react";
 
 enableStaticRendering(typeof window === "undefined")
 
-class UpdateDialogStore<E> implements Store<E>, API<E> {
+class UpdateDialogStore<E, Data = {}> implements Store<E>, API<E> {
 
     public visible: boolean = false
     public submited: boolean = false
     public entity: E | null = null
+    public data: Data | null = null
     protected callbacks: Callbacks<E> | null = null
 
     constructor() {
@@ -22,9 +23,10 @@ class UpdateDialogStore<E> implements Store<E>, API<E> {
         })
     }
 
-    open(entity: E, callbacks: Callbacks<E>): void {
+    open(entity: E, callbacks: Callbacks<E>, data?: Data): void {
         this.visible = true
         this.entity = entity
+        this.data = data ?? null
         this.callbacks = callbacks
     }
 
@@ -33,6 +35,7 @@ class UpdateDialogStore<E> implements Store<E>, API<E> {
         this.visible = false
         this.submited = false
         this.entity = null
+        this.data = null
         this.callbacks = null
     }
 

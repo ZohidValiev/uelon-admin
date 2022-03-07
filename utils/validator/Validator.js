@@ -15,7 +15,7 @@ export default class Validator
 
     validate(...properties)
     {
-        this.clearErrors()
+        this.clearErrors(...properties)
 
         if (properties.length === 0) {
             properties = this._values.keys()
@@ -67,9 +67,15 @@ export default class Validator
         return this._errors.has(property)
     }
 
-    clearErrors()
+    clearErrors(...properties)
     {
-        this._errors.clear()
+        if (properties.length > 0) {
+            for (let property in properties) {
+                this._errors.delete(property)
+            }
+        } else {
+            this._errors.clear()
+        }
 
         return this
     }

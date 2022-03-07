@@ -175,11 +175,12 @@ class FormContainer extends Component<Props, State> {
         e.preventDefault()
         
         if (!this.validator.validate()) {
-            for (let field in this.state.errors) {
-                this.state.errors[field] = this.validator.getFirstError(field) ?? ""
+            const errors = { ...this.state.errors }
+            for (let field in errors) {
+                errors[field] = this.validator.getFirstError(field) ?? ""
             }
             this.setState({ 
-                errors: this.state.errors
+                errors,
             })
             return
         }

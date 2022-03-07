@@ -1,6 +1,6 @@
 
-import { ChangeEvent, FC, FocusEvent, FormEvent } from "react"
-import { Form as _Form, FormRow, FieldInput, FormButtonRow, FormButton, ErrorBlock } from "@/components/form"
+import { ChangeEvent, ChangeEventHandler, FC, FocusEvent, FocusEventHandler, FormEvent, FormEventHandler } from "react"
+import { Form as _Form, FormRow, FieldInput, FormButtonRow, FormButton, ErrorBlock } from "@/components/common/form"
 
 
 type Props = {
@@ -15,9 +15,9 @@ type Props = {
         username: string
         password: string
     }
-    onSubmit: (e: FormEvent) => void
-    onChange: (e: ChangeEvent) => void
-    onBlur:   (e: FocusEvent) => void
+    onSubmit: FormEventHandler<HTMLFormElement>
+    onChange: ChangeEventHandler<HTMLInputElement>
+    onBlur:   FocusEventHandler<HTMLInputElement>
 }
 
 const Form: FC<Props> = ({ action, error, fields, errors, csrfToken, onSubmit, onChange, onBlur }) => {

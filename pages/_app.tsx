@@ -26,7 +26,7 @@ type Props = {
   }
 }
 
-function MyApp({ Component, pageProps: { fallback, session, ...pageProps }}: Props) {
+function MyApp({ Component, pageProps: { session, ...pageProps }}: Props) {
 
   let auth: AuthType | null = null
   
@@ -37,12 +37,7 @@ function MyApp({ Component, pageProps: { fallback, session, ...pageProps }}: Pro
   return (
     <>
         <SessionProvider session={session}>
-          {/* <SWRConfig value={{ fallback }}> */}
-          <SWRConfig 
-            value={{ 
-              //use: [m_useSWRCompleted] 
-            }}
-          >
+          <SWRConfig>
             { auth ? (
               <Auth auth={auth}>
                 <Component {...pageProps} />
@@ -87,7 +82,7 @@ const Auth: FC<AuthProps> = ({ auth, children }) => {
         router.replace("/auth/access-denied")
       }
     }
-  })
+  }, [status.authenticated, session.user, router])
 
   if (accessGranted) {
     return (

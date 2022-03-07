@@ -2,7 +2,8 @@
 import {} from "next"
 import Link from "next/link"
 import { Layout } from '@/components/common/layout'
-import { AuthNextPage, AuthRole } from "@/types/pages"
+import { AuthNextPage } from "@/types/pages"
+import { Roles } from "@/types/users"
 
 
 const Home: AuthNextPage = () => {
@@ -20,7 +21,7 @@ const Home: AuthNextPage = () => {
 }
 
 Home.auth = {
-    role: AuthRole.ROLE_MODERATOR
+    role: Roles.ROLE_MODERATOR
 }
 
 export default Home

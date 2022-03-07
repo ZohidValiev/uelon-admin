@@ -36,3 +36,9 @@
 .toolButton:hover > .toolButton__icon {
     fill: #ffffff;
 }
+.toolButton:active {
+    color: #ffc107;
+}
+.toolButton:active > .toolButton__icon {
+    fill: #ffc107;
+}

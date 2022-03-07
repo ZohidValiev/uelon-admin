@@ -65,9 +65,11 @@ export default NextAuth({
             if (token.user) {
                 const authUser = token.user as Auth.User
                 session.user = {
+                    // @ts-ignore
                     id: authUser.id,
                     email: authUser.username,
                     name: authUser.nickname,
+                    // @ts-ignore
                     roles: authUser.roles,
                 }
             }

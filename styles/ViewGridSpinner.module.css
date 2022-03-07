@@ -6,11 +6,12 @@
     background-color: #ffffff;
 }
 .viewGridSpinner__name {
-    background-color: rgba(0, 0, 0, .3);
+    border-left: 2px solid rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .15);
     height: 3.7rem;
 }
 .viewGridSpinner__value {
-    border: 1px solid rgba(0, 0, 0, .3);
+    border: 1px solid rgba(0, 0, 0, .15);
     border-left-width: 0;
     height: 3.7;
     background-color: rgba(0, 0, 0, .075);

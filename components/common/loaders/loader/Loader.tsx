@@ -3,12 +3,18 @@ import { FC } from "react"
 
 interface Props {
     size: 24 | 32 | 48 | 64
+    className?: string
 }
 
-const Loader: FC<Props> = ({ size }) => {
+const Loader: FC<Props> = ({ size, className="" }) => {
+
+    const classes = [
+        `dash-spinner-${size}x${size}`,
+        className,
+    ]
 
     return (
-        <i className={`dash-spinner-${size}x${size}`}/>
+        <i className={classes.join(" ")}/>
     )
 }
 

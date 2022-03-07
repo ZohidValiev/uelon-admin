@@ -15,6 +15,7 @@ function Tabs() {
             <TabLink 
                 title="Редактировать"
                 active={true}
+                href={null}
             />
         )
     }
@@ -25,6 +26,7 @@ function Tabs() {
             <TabLink 
                 title="Просмотр"
                 active={true}
+                href={null}
             />
         )
     }

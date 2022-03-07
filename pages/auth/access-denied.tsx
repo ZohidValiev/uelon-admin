@@ -1,4 +1,5 @@
 
+import { Roles } from "@/types/users"
 import { AuthNextPage } from "@/types/pages"
 
 const AccessDeniedPage: AuthNextPage = () => {
@@ -8,7 +9,7 @@ const AccessDeniedPage: AuthNextPage = () => {
 }
 
 AccessDeniedPage.auth = {
-    role: "ROLE_MODERATOR"
+    role: Roles.ROLE_MODERATOR
 }
 
 export default AccessDeniedPage

@@ -8,7 +8,7 @@ export interface Store {
 
 export interface Callbacks {
     onOK(): void
-    onCancel(): void
+    onCancel?(): void
 }
 
 export interface API {

@@ -11,6 +11,6 @@ export interface Store {
 
 export interface API {
     openInfo(title: string, content: string | ReactNode): void
-    openError(title: string, content: string | ReactNode): void
+    openError?(title: string, content: string | ReactNode): void
     close(): void
 }

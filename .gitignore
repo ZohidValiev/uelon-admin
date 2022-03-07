@@ -4,6 +4,7 @@
 test.js
 /html
 /test
+/.vscode
 
 # dependencies
 /node_modules

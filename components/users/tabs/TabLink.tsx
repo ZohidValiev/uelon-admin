@@ -1,8 +1,15 @@
 
+import { FC } from "react"
 import Link from 'next/link'
 import styles from '@/styles/Tabs.module.css'
 
-function TabLink({ href, title, active }) {
+interface Props {
+    title: string
+    href: string | null
+    active: boolean
+}
+
+const TabLink: FC<Props> = ({ href, title, active }) => {
 
     if (active) {
         return (
