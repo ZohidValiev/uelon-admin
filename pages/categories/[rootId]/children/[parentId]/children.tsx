@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useCategoriesLevel3, useCategory } from "@/hooks/categories"
 import { _message } from "@/components/common/message"
 import { _infoLoader } from "@/components/common/loaders/info-loader"
-import { Page } from "@/components/common/page"
+import { Page } from "@/components/page"
 import { Tabs as CategoriesTabs } from "@/components/categories/tabs"
 import { TableContainer } from "@/components/categories/table"
 import { Breadcrumbs } from "@/components/common/breadcrumbs"
@@ -94,11 +94,11 @@ const CategoriesChildrenChildrenPage: FC = () => {
 
 export default CategoriesChildrenChildrenPage
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    return {
-        props: {
-            session: await getSession()
-        }
-    }
-}
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//     return {
+//         props: {
+//             session: await getSession()
+//         }
+//     }
+// }
 

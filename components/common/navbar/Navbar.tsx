@@ -1,23 +1,24 @@
 
 import { FC, memo, MouseEventHandler } from "react"
-import MenuLink from "./MenuLink"
+import NavbarLink from "./NavbarLink"
 import styles from "@/styles/Menu.module.css"
 
-
-interface Props {
-    links: {
-        title: string
-        href?: string
-        onClick?: MouseEventHandler<HTMLAnchorElement>
-    }[]
+export interface ItemLink {
+    title: string
+    href?: string
+    onClick?: MouseEventHandler<HTMLAnchorElement>
 }
 
-const Menu: FC<Props> = ({ links }) => {
+interface Props {
+    links: ItemLink[]
+}
+
+const Navbar: FC<Props> = ({ links }) => {
 
     return (
         <ul className={styles.menu}>
             { links.map(({ title, href, onClick }, ix) => (
-                <MenuLink
+                <NavbarLink
                     key={ix}
                     title={title}
                     href={href}
@@ -28,4 +29,4 @@ const Menu: FC<Props> = ({ links }) => {
     )
 }
 
-export default memo(Menu)
+export default memo(Navbar)

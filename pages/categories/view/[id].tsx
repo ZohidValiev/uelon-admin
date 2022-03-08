@@ -2,7 +2,7 @@
 import { GetServerSideProps } from "next"
 import { getSession } from "next-auth/react"
 import { AuthNextPage } from "@/types/pages"
-import { Page } from "@/components/common/page"
+import { Page } from "@/components/page"
 import { Tabs as CategoryTabs } from "@/components/categories/tabs"
 import { CategoryViewContainer } from "@/components/categories/view"
 import styles from "@/styles/Page.module.css"

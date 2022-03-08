@@ -10,7 +10,7 @@ interface Props {
     onClick?: MouseEventHandler<HTMLAnchorElement>
 }
 
-const MenuLink: FC<Props> = ({ title, href, onClick }) => {
+const NavbarLink: FC<Props> = ({ title, href, onClick }) => {
 
     return (
         <li className={styles.menu__item}>
@@ -30,4 +30,4 @@ const MenuLink: FC<Props> = ({ title, href, onClick }) => {
     )
 }
 
-export default memo(MenuLink)
+export default memo(NavbarLink)

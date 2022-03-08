@@ -2,7 +2,7 @@
 import { GetServerSideProps } from "next"
 import { useCategoriesLevel2, useCategory } from "@/hooks/categories"
 import { _message } from "@/components/common/message"
-import { Page } from "@/components/common/page"
+import { Page } from "@/components/page"
 import { Tabs as CategoriesTabs } from "@/components/categories/tabs"
 import { TableContainer } from "@/components/categories/table"
 import { TableSpinner } from "@/components/common/spinners/table"
@@ -80,10 +80,10 @@ const CategoriesChildrenPage: FC = () => {
 
 export default CategoriesChildrenPage
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    return {
-        props: {
-            session: await getSession(context)
-        }
-    }
-}
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//     return {
+//         props: {
+//             session: await getSession(context)
+//         }
+//     }
+// }

@@ -4,7 +4,7 @@
     flex-flow: column;
     width: 92rem;
 }
-.page__header {
+/* .page__header {
     display: flex;
     justify-content: space-between;
     flex-flow: row nowrap;
@@ -12,13 +12,12 @@
     background-color: #ffe69c;
     border-left: 2px solid #17a2b8;
     height: 5rem;
-}
+} */
 .page__title {
-    font-weight: 500;
-    top: -2px;
     padding: 0;
-    margin: 0;
-    padding: 1rem 1rem 1.2rem;
+    margin: 0 0 2.2rem 0;
+    font-size: 2.4rem;
+    font-weight: 500;
 }
 /* .page__titleContent {
     background-color: #ffc107;

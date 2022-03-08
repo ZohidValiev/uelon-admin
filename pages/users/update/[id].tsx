@@ -2,7 +2,7 @@
 import { GetServerSideProps } from "next"
 import { getSession } from "next-auth/react"
 import { AuthNextPage } from "@/types/pages"
-import { Page } from "@/components/common/page"
+import { Page } from "@/components/page"
 import { Tabs as UserTabs } from "@/components/users/tabs"
 import { UserView } from "@/components/users/view"
 import { ChangeNicknameDialog } from "@/components/users/dialogs/change-nickname"

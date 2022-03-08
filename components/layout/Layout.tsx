@@ -1,16 +1,16 @@
 
 import { FC, ReactElement } from "react"
+import Header from "./Header"
 import styles from "@/styles/Layout.module.css"
 
 interface Props {
-    header?: ReactElement
     footer?: ReactElement
 }
 
-const Layout: FC<Props> = ({header, children, footer}) => {
+const Layout: FC<Props> = ({ children, footer}) => {
     return (
         <div className={styles.container}>
-            <header>{header}</header>
+            <Header />
             <main className={styles.main}>
                 {children}
             </main>

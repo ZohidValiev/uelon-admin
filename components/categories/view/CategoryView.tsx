@@ -1,6 +1,6 @@
 
 import { FC } from "react"
-import { Entity } from "@/types/categories"
+import { Entity, getCategoryTitle, Locale } from "@/types/categories"
 import styles from "@/styles/ViewGrid.module.css"
 
 
@@ -15,9 +15,9 @@ const CategoryView: FC<Props> = ({ category }) => {
             <div className={styles.viewGrid__name}>ID</div>
             <div className={styles.viewGrid__value}>{ category.id }</div>
             <div className={styles.viewGrid__name}>Название Uz</div>
-            <div className={styles.viewGrid__value}>{ category.translations.UZ.title }</div>
+            <div className={styles.viewGrid__value}>{ getCategoryTitle(category, Locale.UZ) }</div>
             <div className={styles.viewGrid__name}>Название Ru</div>
-            <div className={styles.viewGrid__value}>{ category.translations.RU.title }</div>
+            <div className={styles.viewGrid__value}>{ getCategoryTitle(category, Locale.RU) }</div>
             <div className={styles.viewGrid__name}>Уровень вложенности</div>
             <div className={styles.viewGrid__value}>{ category.level }</div>
             <div className={styles.viewGrid__name}>Иконка</div>

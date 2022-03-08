@@ -82,7 +82,7 @@ const Auth: FC<AuthProps> = ({ auth, children }) => {
         router.replace("/auth/access-denied")
       }
     }
-  }, [status.authenticated, session.user, router])
+  }, [status.authenticated, router])
 
   if (accessGranted) {
     return (
