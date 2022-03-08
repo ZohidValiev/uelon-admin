@@ -31,10 +31,10 @@ UsersPage.auth = {
 
 export default UsersPage
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    return {
-        props: {
-            session: await getSession(context)
-        }
-    }
-}
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//     return {
+//         props: {
+//             session: await getSession(context)
+//         }
+//     }
+// }
