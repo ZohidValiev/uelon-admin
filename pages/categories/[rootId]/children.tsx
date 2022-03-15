@@ -9,7 +9,7 @@ import { TableSpinner } from "@/components/common/spinners/table"
 import { Breadcrumbs } from "@/components/common/breadcrumbs"
 import { BreadcrumbsSpinner } from "@/components/common/spinners/breadcrumbs"
 import styles from "@/styles/Page.module.css"
-import { FC, useEffect } from "react"
+import { useEffect } from "react"
 import { CategoryToolBar } from "@/components/categories/tool-bar"
 import { ChangePositionDialog } from "@/components/categories/dialogs/change-position"
 import { CategoryCUDialog } from "@/components/categories/dialogs/cu-dialog"
@@ -17,9 +17,11 @@ import { _infoLoader } from "@/components/common/loaders/info-loader"
 import { useRouter } from "next/router"
 import { getSession } from "next-auth/react"
 import { getCategoryTitle } from "@/types/categories"
+import { Roles } from "@/types/users"
+import { AuthNextPage } from "@/types/pages"
 
 
-const CategoriesChildrenPage: FC = () => {
+const CategoriesChildrenPage: AuthNextPage = () => {
 
     const { query } = useRouter()
     const rootId = parseInt((query.rootId as unknown) as string)
@@ -78,12 +80,8 @@ const CategoriesChildrenPage: FC = () => {
     )
 }
 
-export default CategoriesChildrenPage
+CategoriesChildrenPage.auth = {
+    role: Roles.ROLE_ADMIN
+}
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//     return {
-//         props: {
-//             session: await getSession(context)
-//         }
-//     }
-// }
+export default CategoriesChildrenPage

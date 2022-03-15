@@ -68,30 +68,3 @@ CategoriesPage.auth = {
 }
 
 export default CategoriesPage
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//     return {
-//         props: {
-//             session: await getSession(context)
-//         }
-//     }
-//     // let response
-
-//     // try {
-//     //     response = await api.loadCategoriesLevel1()
-//     // } catch (error) {
-//     //     return {
-//     //         notFound: true,
-//     //     }
-//     // }
-    
-//     // const categories = response.data
-
-//     // return {
-//     //     props: {
-//     //         fallback: {
-//     //             '/api/categories': categories
-//     //         }
-//     //     }
-//     // }
-// }
