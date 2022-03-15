@@ -32,11 +32,3 @@ UserUpdatePage.auth = {
 }
 
 export default UserUpdatePage
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//     return {
-//         props: {
-//             session: await getSession(context)
-//         }
-//     }
-// }
