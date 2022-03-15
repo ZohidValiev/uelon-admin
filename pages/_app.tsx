@@ -17,6 +17,7 @@ import { PageLoader } from "@/components/common/loaders/page-loader"
 import { FC, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { Auth, hasUserRole } from "@/types/users"
+import { tokenStore } from "@/stores/token"
 
 
 type Props = {
@@ -74,8 +75,10 @@ const Auth: FC<AuthProps> = ({ auth, children }) => {
   
   useEffect(() => {
     if (status.authenticated) {
+      //@ts-ignore
+      tokenStore.setToken(session.accessToken, session.refreshToken)
+      
       const user = session.user as Auth.User
-
       if (hasUserRole(user, (auth.role as unknown) as string)) {
         setAccessGranted(true)
       }  else {

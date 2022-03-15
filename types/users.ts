@@ -52,6 +52,7 @@ export namespace Auth {
     // Данные возвращаемые сервером при успешной утентификации
     export interface Data {
         token: string
+        refreshToken: string
         data: User
     }
 }

@@ -1,6 +1,6 @@
 
 import { instance, patch }  from "./axios"
-import { DTO, Entity, Auth, Roles, Status } from "../types/users"
+import { DTO, Entity, Roles, Status } from "@/types/users"
 
 
 export async function loadUsers(): Promise<Entity.User[]> {
@@ -9,13 +9,6 @@ export async function loadUsers(): Promise<Entity.User[]> {
 
 export async function loadUser(id: number): Promise<Entity.User> {
     return (await instance.get<Entity.User>(`/users/${id}`)).data
-}
-
-export async function login(email: string, password: string): Promise<Auth.Data> {
-    return (await instance.post<Auth.Data>("/login_check", {
-        email,
-        password,
-    })).data
 }
 
 export async function createUser(data: DTO.CreateUser): Promise<Entity.User> {
