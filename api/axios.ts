@@ -1,6 +1,6 @@
 
 import { signOut } from "next-auth/react"
-import { tokenStore } from "@/types/token"
+import { tokenStore } from "@/stores/token"
 import axios, { AxiosInstance, AxiosRequestHeaders, AxiosRequestConfig, AxiosResponse } from "axios"
 
 function create(): AxiosInstance {

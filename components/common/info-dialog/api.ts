@@ -1,7 +1,7 @@
 
 import { ReactNode } from "react"
-import { API } from "@/types/info-dialog"
-import { api as _api } from "@/stores/InfoDialogStore"
+// import { API } from "@/types/info-dialog"
+import { api as _api, API } from "@/stores/InfoDialogStore"
 
 const api: API = {
     openInfo(title: string, content: string | ReactNode) {

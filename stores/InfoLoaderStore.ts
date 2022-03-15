@@ -1,9 +1,18 @@
 
 import { makeObservable, observable, action } from "mobx"
 import { enableStaticRendering } from "mobx-react"
-import { Store, API } from "@/types/info-loader"
+// import { Store, API } from "@/types/info-loader"
 
 enableStaticRendering(typeof window === "undefined")
+
+export interface Store {
+    visible: boolean
+}
+
+export interface API {
+    open(): void
+    close(): void
+}
 
 class InfoLoaderStore implements Store, API {
 

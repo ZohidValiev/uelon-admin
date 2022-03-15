@@ -2,9 +2,23 @@
 import { ReactNode } from "react"
 import { makeObservable, observable, action } from "mobx"
 import { enableStaticRendering } from "mobx-react"
-import { Store, API } from "@/types/info-dialog"
+// import { Store, API } from "@/types/info-dialog"
 
 enableStaticRendering(typeof window === "undefined")
+
+export interface Store {
+    type: string
+    title: string
+    content: string | ReactNode | null
+    visible: boolean
+    close(): void
+}
+
+export interface API {
+    openInfo(title: string, content: string | ReactNode): void
+    openError?(title: string, content: string | ReactNode): void
+    close(): void
+}
 
 class InfoDialogStore implements Store, API
 {

@@ -1,9 +1,19 @@
 
 import { makeObservable, observable, action } from "mobx"
 import { enableStaticRendering } from "mobx-react"
-import { Store, API } from "@/types/message"
+// import { Store, API } from "@/types/message"
 
 enableStaticRendering(typeof window === "undefined")
+
+export interface Store {
+    visible: boolean
+    getMessage(): string
+}
+
+export interface API {
+    open(message: string): void
+    close(): void
+}
 
 class MessageStore implements Store, API {
 

@@ -1,10 +1,26 @@
 
 import { makeObservable, action, observable } from "mobx"
-import { Callbacks, API, Store } from "@/types/confirm-dialog"
+// import { Callbacks, API, Store } from "@/types/confirm-dialog"
 import { enableStaticRendering } from "mobx-react"
 
 enableStaticRendering(typeof window === "undefined")
 
+export interface Store {
+    visible: boolean
+    content: string
+    onOK(): void
+    onCancel(): void
+}
+
+export interface Callbacks {
+    onOK(): void
+    onCancel?(): void
+}
+
+export interface API {
+    open(content: string, callbacks: Callbacks): void
+    close(): void
+}
 
 class ConfirmDialogStore implements API, Store {
 

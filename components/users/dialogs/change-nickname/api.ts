@@ -1,7 +1,7 @@
 
-import { API } from "@/types/update-dialog"
+// import { API } from "@/types/update-dialog"
 import { Entity } from "@/types/users"
-import { api as _api } from "./store"
+import { api as _api, API } from "./store"
 
 
 const api: API<Entity.User> = {

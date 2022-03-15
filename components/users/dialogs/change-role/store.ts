@@ -1,6 +1,6 @@
 
-import { API, Store } from "@/types/update-dialog"
-import UpdateDialogStore from "@/stores/UpdateDialogStore"
+// import { API, Store } from "@/types/update-dialog"
+import UpdateDialogStore, { API, Store } from "@/stores/UpdateDialogStore"
 import { Entity } from "@/types/users"
 
 

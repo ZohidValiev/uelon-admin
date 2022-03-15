@@ -1,6 +1,6 @@
 
-import { API } from "@/types/message"
-import { api as _api } from "@/stores/MessageStore"
+// import { API } from "@/types/message"
+import { api as _api, API } from "@/stores/MessageStore"
 
  const api: API = {
     open(message: string) {

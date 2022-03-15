@@ -32,9 +32,9 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
                 },
             })
         ],
-        jwt: {
-            maxAge: 300,
-        },
+        // jwt: {
+        //     maxAge: 300,
+        // },
         callbacks: {
             async signIn({ user, account, profile, email, credentials }) {
                 if (user) {
@@ -44,6 +44,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
                 return false
             },
             async jwt({ token, user, account, profile, isNewUser }) {
+                if (user) {
                     const payload = (user as any) as Auth.Data
                     token.accessToken = payload.token
                     token.refreshToken = payload.refreshToken
@@ -51,7 +52,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
                     return token
                 }
                 
-                if ("refresh-token" in req.query) {
+                if (req.query["refresh-token"] == 1) {
                     try {
                         // @ts-ignore
                         const payload = await api.refreshAccessToken(token.refreshToken)   

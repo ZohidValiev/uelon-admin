@@ -1,10 +1,31 @@
 
 import { action, makeObservable, observable, runInAction } from "mobx"
 import { axiosHttpCode422Thrower } from "@/api/axios";
-import { Store, API, Callbacks, Endpoint } from "@/types/create-dialog"
+// import { Store, API, Callbacks, Endpoint } from "@/types/create-dialog"
 import { enableStaticRendering } from "mobx-react";
 
 enableStaticRendering(typeof window === "undefined")
+
+export interface Store<E> {
+    visible: boolean
+    submited: boolean
+    send(endpoint: Endpoint<E>): void
+    close: () => void
+}
+
+export interface Callbacks<E> {
+    onOK: (entity: E) => void
+    onError?: (error: any) => void
+}
+
+export interface API<E> {
+    open: (callbacks: Callbacks<E>) => void
+    close: () => void
+}
+
+export interface Endpoint<E> {
+    (): Promise<E>
+}
 
 class CreateDialogStore<E> implements Store<E>, API<E> {
 
