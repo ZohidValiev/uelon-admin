@@ -1,0 +1,21 @@
+
+.links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+.link {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    background-color: #176ab8;
+    padding: 0.8rem 1.4rem 0.9rem;
+    color: #ffffff;
+    text-align: center;
+    transition: all;
+    cursor: pointer;
+}
+.link:hover {
+    background-color: #ffc107;
+    color: #000000;
+}

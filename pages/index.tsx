@@ -1,21 +1,18 @@
 
-import Link from "next/link"
-import { Layout } from '@/components/layout'
+import { HomeLinks } from "@/components/common/link"
 import { AuthNextPage } from "@/types/pages"
 import { Roles } from "@/types/users"
+import { Page } from "@/components/page"
+import styles from "@/styles/Page.module.css"
 
 
 const Home: AuthNextPage = () => {
   return (
-      <Layout footer={null}>
-        <Link href="/users">
-          <a>Пользователи</a>
-        </Link>
-        <br/>
-        <Link href="/categories">
-          <a>Категории</a>
-        </Link>
-      </Layout>
+    <Page title="Главная">
+      <div className={styles.page__content}>
+        <HomeLinks />
+      </div>
+    </Page>
   )
 }
 
