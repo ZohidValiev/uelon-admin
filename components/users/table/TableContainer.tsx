@@ -8,7 +8,12 @@ import { _infoLoader } from "@/components/common/loaders/info-loader"
 import Table from "./Table"
 import { PaginationBlock, Pagination } from "@/components/common/pagination"
 import { TableSpinner } from "@/components/common/spinners/table"
-
+import * as api from "@/api/users"
+import { _confirm } from "@/components/common/confirm-dialog"
+import { _message } from "@/components/common/message"
+import { Entity } from "@/types/users"
+import { UserActionsContext, Value } from "./context"
+import { useRouter } from "next/router"
 
 interface State {
     prevPage: number
@@ -39,6 +44,40 @@ const TableContainer: FC = () => {
         error, 
         mutate,
     } = useUsers(state.page)
+
+    const router = useRouter()
+    const handleUpdate = useCallback((user: Entity.User) => {
+        router.push(`/users/update/${user.id}`)
+    }, [router])
+
+    const handleRemove = useCallback(async (user: Entity.User) => {
+        _confirm.open(`Вы действительно хотите удалить пользователя? `, {
+            async onOK() {
+                _message.open("Ждите, идет удаление пользователя.")
+                try {
+                    await api.remove(user.id)   
+                } catch (error) {
+                    _info.openError("Ошибка", "Во время выполнения действия произошла ошибка.")
+                    return
+                } finally {
+                    _message.close()
+                }   
+
+                _message.open("Ждите, идет обновление пользователей")
+                try {
+                    await mutate()
+                } finally {
+                    _message.close()
+                }
+            }
+        })
+    }, [mutate])
+
+    const [ contextValue ] = useState<Value>(() => ({
+        handleUpdate,
+        handleRemove,
+    }))
+
 
     const em = useEventManager()
     useEffect(() => {
@@ -78,10 +117,12 @@ const TableContainer: FC = () => {
     }
 
     const _page = isLoading ? state.prevPage : state.page
-
+    
     return (
         <>
-            <Table users={users} page={_page} totalItemsCount={ITEMS_COUNT} />
+            <UserActionsContext.Provider value={contextValue}>
+                <Table users={users} page={_page} totalItemsCount={ITEMS_COUNT} />
+            </UserActionsContext.Provider>
             { totalItems <= ITEMS_COUNT
                 ? null
                 : <PaginationBlock>

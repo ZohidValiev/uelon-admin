@@ -14,12 +14,6 @@ interface Props {
 
 const TableRow: FC<Props> = ({ ix, user }) => {
 
-    const router = useRouter()
-
-    const handleUpdate = useCallback<MouseEventHandler<SVGSVGElement>>(() => {
-        router.push(`/users/update/${user.id}`)
-    }, [user])
-
     return (
         <tr className={styles.table__row}>
             <td className={[styles.table__cell, styles.table__cell_center].join(" ")}>
@@ -35,9 +29,7 @@ const TableRow: FC<Props> = ({ ix, user }) => {
                 <UserStatus status={user.status}/>
             </td>
             <td className={styles.table__cell}>
-                <Actions 
-                    onUpdate={handleUpdate}
-                />
+                <Actions user={user} />
             </td>
         </tr>
     )

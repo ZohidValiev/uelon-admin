@@ -35,3 +35,7 @@ export async function updateUserRole(id: number, role: Roles): Promise<Entity.Us
     }
     return (await patch<Entity.User>(`/users/${id}/role`, data)).data
 }
+
+export async function remove(id: number): Promise<void> {
+    return await instance.delete(`/users/${id}`);
+}
