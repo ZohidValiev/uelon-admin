@@ -4,7 +4,7 @@ import { DTO, Entity, Roles, Status } from "@/types/users"
 
 
 export async function loadUsers(): Promise<Entity.User[]> {
-    return (await instance.get<Entity.User[]>("/users?_order[id]=desc")).data
+    return (await instance.get<Entity.User[]>("/users")).data
 }
 
 export async function loadUser(id: number): Promise<Entity.User> {
