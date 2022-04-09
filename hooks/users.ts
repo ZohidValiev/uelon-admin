@@ -23,7 +23,7 @@ export const useUser = (id: number, config: SWRConfiguration<Entity.User> = {}) 
 }
 
 export const useUsers = (page: number, config: SWRConfiguration<Entity.User> = {}) => {
-    const key = `/users?page=${page}&_order[id]=desc`
+    const key = `/users?page=${page}`
     const result = useSWR(key, fetcher, {
         use: [ mLaggyHydra ],
         ...config,

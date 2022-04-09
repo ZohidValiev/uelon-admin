@@ -1,6 +1,4 @@
 
-import { GetServerSideProps } from "next"
-import { getSession } from "next-auth/react"
 import { AuthNextPage } from "@/types/pages"
 import { Page } from "@/components/page"
 import { Tabs as UserTabs } from "@/components/users/tabs"

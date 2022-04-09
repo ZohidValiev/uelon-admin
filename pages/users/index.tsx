@@ -1,5 +1,4 @@
 
-import { GetServerSideProps } from "next"
 import { AuthNextPage } from "@/types/pages"
 import { Page } from "@/components/page"
 import { UserToolBar } from "@/components/users/tool-bar"
@@ -7,7 +6,6 @@ import { TableContainer } from "@/components/users/table"
 import { Tabs as UserTabs } from "@/components/users/tabs"
 import styles from "@/styles/Page.module.css"
 import { CreateUserDialog } from "@/components/users/dialogs/create"
-import { getSession } from "next-auth/react"
 import { Roles } from "@/types/users"
 
 
