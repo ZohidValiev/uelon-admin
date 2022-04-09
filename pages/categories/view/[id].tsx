@@ -1,6 +1,4 @@
 
-import { GetServerSideProps } from "next"
-import { getSession } from "next-auth/react"
 import { AuthNextPage } from "@/types/pages"
 import { Page } from "@/components/page"
 import { Tabs as CategoryTabs } from "@/components/categories/tabs"
@@ -26,12 +24,3 @@ ViewCategoryPage.auth = {
 }
 
 export default ViewCategoryPage
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-
-    return {
-        props: {
-            session: await getSession(context)
-        }
-    }
-}

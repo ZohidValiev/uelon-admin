@@ -1,6 +1,4 @@
 
-import { GetServerSideProps } from "next"
-import { getSession } from "next-auth/react"
 import { useCategoriesLevel1 } from "@/hooks/categories"
 import { _message } from "@/components/common/message"
 import { Page } from "@/components/page"

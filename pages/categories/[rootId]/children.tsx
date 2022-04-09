@@ -1,5 +1,4 @@
 
-import { GetServerSideProps } from "next"
 import { useCategoriesLevel2, useCategory } from "@/hooks/categories"
 import { _message } from "@/components/common/message"
 import { Page } from "@/components/page"
@@ -15,7 +14,6 @@ import { ChangePositionDialog } from "@/components/categories/dialogs/change-pos
 import { CategoryCUDialog } from "@/components/categories/dialogs/cu-dialog"
 import { _infoLoader } from "@/components/common/loaders/info-loader"
 import { useRouter } from "next/router"
-import { getSession } from "next-auth/react"
 import { getCategoryTitle } from "@/types/categories"
 import { Roles } from "@/types/users"
 import { AuthNextPage } from "@/types/pages"
