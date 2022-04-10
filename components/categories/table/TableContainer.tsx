@@ -1,7 +1,9 @@
 
-import { useCallback, useEffect } from "react"
-import  * as api from "@/api/categories"
+import { FC, useCallback, useEffect } from "react"
+import * as api from "@/api/categories"
+import { Entity } from "@/types/categories"
 import { _message } from "@/components/common/message"
+import { TableSpinner } from "@/components/common/spinners/table"
 import Table from "./Table"
 import { _confirm } from "@/components/common/confirm-dialog"
 import { _info } from "@/components/common/info-dialog"
@@ -11,7 +13,13 @@ import { useEventManager } from "@/utils/event-manager"
 import { CategoryEvent, createEventAlias } from "@/events"
 
 
-function TableContainer({ categories, mutate }) {
+interface Props {
+    categories: Entity.Category[]
+    mutate: any
+    isLoading: boolean
+}
+
+const TableContainer: FC<Props> = ({ categories, mutate, isLoading }) => {
     const MESSAGE_UPDATE = "Ждите, идет обновление категорий..."
 
     const em = useEventManager()
@@ -33,9 +41,13 @@ function TableContainer({ categories, mutate }) {
                 categoriesLength: categories.length 
             }, 
             {
-                onOK(category) {
-                    mutate()
+                async onOK(category) {
                     _message.open(MESSAGE_UPDATE)
+                    try {
+                        await mutate()
+                    } finally {
+                        _message.close()
+                    }
                 }
             }
         )
@@ -48,9 +60,13 @@ function TableContainer({ categories, mutate }) {
                 categoriesLength: categories.length,
             },
             {
-                onOK() {
-                    mutate()
-                    _message.open(MESSAGE_UPDATE)        
+                async onOK(category) {
+                    _message.open(MESSAGE_UPDATE)
+                    try {
+                        await mutate()
+                    } finally {
+                        _message.close()
+                    }
                 }
             }
         )
@@ -75,24 +91,40 @@ function TableContainer({ categories, mutate }) {
                 try {
                     await api.remove(category.id)
                 } catch (error) {
-                    _message.close()
                     _info.openError("Ошибка", "Во время выполнения действия произошла ошибка.")
                     return
+                } finally {
+                    _message.close()
                 }
+
                 _message.open(MESSAGE_UPDATE)
-                mutate()
+                try {
+                    await mutate()
+                } finally {
+                    _message.close()
+                }
             }
         })
     }, [categories])
 
     return (
-        <Table 
-            categories={categories} 
-            onUpdate={handleUpdate}
-            onUp={handlePositionUp}
-            onDown={handlePositionDown}
-            onDelete={handleDelete}
-        />
+        <>
+            { isLoading && (
+                <TableSpinner 
+                    columns={7} 
+                    rows={10} 
+                /> 
+            ) }
+            { !isLoading && (
+                <Table 
+                    categories={categories} 
+                    onUpdate={handleUpdate}
+                    onUp={handlePositionUp}
+                    onDown={handlePositionDown}
+                    onDelete={handleDelete}
+                />
+            ) }
+        </>
     )
 }
 
