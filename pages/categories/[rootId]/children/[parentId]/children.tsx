@@ -6,15 +6,12 @@ import { _infoLoader } from "@/components/common/loaders/info-loader"
 import { Page } from "@/components/page"
 import { Tabs as CategoriesTabs } from "@/components/categories/tabs"
 import { TableContainer } from "@/components/categories/table"
-import { Breadcrumbs } from "@/components/common/breadcrumbs"
+import { Breadcrumbs } from "@/components/categories/breadcrumbs"
 import styles from "@/styles/Page.module.css"
 import { ChangePositionDialog } from "@/components/categories/dialogs/change-position"
 import { CategoryCUDialog, _categoryCUDialog } from "@/components/categories/dialogs/cu-dialog"
 import { CategoryToolBar } from "@/components/categories/tool-bar"
 import { useRouter } from "next/router"
-import { BreadcrumbsSpinner } from "@/components/common/spinners/breadcrumbs"
-import { TableSpinner } from "@/components/common/spinners/table"
-import { getCategoryTitle } from "@/types/categories"
 import { Roles } from "@/types/users"
 import { AuthNextPage } from "@/types/pages"
 
@@ -48,42 +45,39 @@ const CategoriesChildrenChildrenPage: AuthNextPage = () => {
         }
     })
 
+    const isLoading = isLoadingRoot || isLoadingParent || isLoadingCategories
+
     useEffect(() => {
-        if (isLoadingRoot || isLoadingParent || isLoadingCategories) {
+        if (isLoading) {
             _infoLoader.open()
         } else {
             _infoLoader.close()
         }
-    }, [isLoadingRoot, isLoadingParent, isLoadingCategories])
-
-    if (errorRoot || errorParent || errorCategories) {
-        return (
-            <>Error</>
-        )
-    }
+    }, [isLoading])
 
     return (
         <Page title="Категории">
             <CategoriesTabs />
             <div className={styles.page__content}>
                 <div className="tool-wrapper">
-                    { isLoadingRoot || isLoadingParent ? (
-                        <BreadcrumbsSpinner />
-                    ) : (
-                        <Breadcrumbs 
-                            links={[ 
-                                getCategoryTitle(rootCategory),
-                                getCategoryTitle(parentCategory),
-                            ]} 
+                    { !errorRoot && !errorParent && (
+                        <Breadcrumbs
+                            categories={[rootCategory, parentCategory]} 
+                            isLoading={isLoadingRoot || isLoadingParent}
                         />
                     ) }
                     <CategoryToolBar />
                 </div>
-                { isLoadingCategories ? (
-                    <TableSpinner rows={10} columns={7} />
-                ) : (
-                    <TableContainer categories={categories} mutate={mutate}/>
+                { !errorCategories && (
+                    <TableContainer 
+                        categories={categories} 
+                        mutate={mutate}
+                        isLoading={isLoadingCategories}
+                    />
                 ) }
+                { errorCategories && (
+                    <>Error categories</>
+                )}
                 <CategoryCUDialog parentId={parentId} />
                 <ChangePositionDialog />
             </div>

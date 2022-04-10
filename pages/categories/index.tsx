@@ -31,27 +31,16 @@ const CategoriesPage: AuthNextPage = () => {
         }
     }, [isLoading])
 
-    if (error) {
-        return (
-            <>Error</>
-        )
-    }
-
     return (
         <Page title="Категории">
             <CategoryTabs />
             <div className={styles.page__content}>
                 <CategoryToolBar />
-                { isLoading && (
-                    <TableSpinner 
-                        columns={7} 
-                        rows={10} 
-                    />
-                )}
-                { !isLoading && (
+                { !error && (
                     <TableContainer 
                         categories={categories} 
                         mutate={mutate}
+                        isLoading={isLoading}
                     />
                 )}
             </div>
@@ -62,7 +51,8 @@ const CategoriesPage: AuthNextPage = () => {
 }
 
 CategoriesPage.auth = {
-    role: Roles.ROLE_ADMIN
+    // role: Roles.ROLE_ADMIN
+    role: Roles.ROLE_MODERATOR
 }
 
 export default CategoriesPage
