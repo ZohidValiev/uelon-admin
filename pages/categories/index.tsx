@@ -51,8 +51,7 @@ const CategoriesPage: AuthNextPage = () => {
 }
 
 CategoriesPage.auth = {
-    // role: Roles.ROLE_ADMIN
-    role: Roles.ROLE_MODERATOR
+    role: Roles.ROLE_ADMIN
 }
 
 export default CategoriesPage
