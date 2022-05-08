@@ -27,8 +27,10 @@ const SidebarLinks: FC = () => {
 
     return (
         <ul className={styles.sidebarLinks}>
-            { availableLinks.map((link) => (
-                <li className={styles.sidebarLinks__item}>
+            { availableLinks.map((link, ix) => (
+                <li key={ix} 
+                    className={styles.sidebarLinks__item}
+                >
                     <Link href={link.href}>
                         <a className={styles.sidebarLinks__link}>
                             { link.title }
