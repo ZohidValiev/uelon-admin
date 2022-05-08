@@ -5,6 +5,7 @@ import { Tabs as CategoryTabs } from "@/components/categories/tabs"
 import { CategoryViewContainer } from "@/components/categories/view"
 import styles from "@/styles/Page.module.css"
 import { Roles } from "@/types/users"
+import { CategoryCUDialog } from "@/components/categories/dialogs/cu-dialog"
 
 
 const ViewCategoryPage: AuthNextPage = () => {
@@ -15,6 +16,7 @@ const ViewCategoryPage: AuthNextPage = () => {
             <div className={styles.page__content}>
                 <CategoryViewContainer />
             </div>
+            <CategoryCUDialog />
         </Page>
     )
 }
