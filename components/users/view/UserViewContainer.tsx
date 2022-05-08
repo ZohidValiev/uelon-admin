@@ -9,22 +9,30 @@ import { _changeRoleDialog } from "@/components/users/dialogs/change-role"
 import { _changeStatusDialog } from "@/components/users/dialogs/change-status"
 import { _info } from "@/components/common/info-dialog"
 import { _infoLoader } from "@/components/common/loaders/info-loader"
+import { UserViewToolBar } from "@/components/users/view-tool-bar"
 import * as users from "@/types/users"
+import events from "@/events-bus"
 
 
 interface Props {}
 
 const UserViewContainer: FC<Props> = () => {
-    const { query } = useRouter()
-    const { data:user, error, mutate, isLoading } = useUser(parseInt(query.id as string))
+    const { query, push } = useRouter()
+    const { data:user, error, mutate, isLoading, isValidating } = useUser(parseInt(query.id as string))
 
     useEffect(() => {
-        if (isLoading) {
+        return events.userDeleted.subscribe((id) => {
+            push('/users')
+        })
+    }, [mutate])
+
+    useEffect(() => {
+        if (isLoading || isValidating) {
             _infoLoader.open()    
         } else {
             _infoLoader.close()
         }
-    }, [isLoading])
+    }, [isLoading, isValidating])
 
     const handleClickNickname = useCallback(() => {
         _changeNicknameDialog.open(user, {
@@ -75,13 +83,16 @@ const UserViewContainer: FC<Props> = () => {
     }
 
     return (
-        <UserView
-            user={user}
-            onClickEmail={null}
-            onClickNickname={handleClickNickname}
-            onClickRole={handleClickRole}
-            onClickStatus={handleClickStatus}
-        />
+        <>
+            <UserViewToolBar user={user} />
+            <UserView
+                user={user}
+                onClickEmail={null}
+                onClickNickname={handleClickNickname}
+                onClickRole={handleClickRole}
+                onClickStatus={handleClickStatus}
+            />
+        </>
     )
 }
 
