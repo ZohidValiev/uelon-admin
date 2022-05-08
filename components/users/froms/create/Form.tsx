@@ -137,16 +137,16 @@ const Form: FC<Props> = ({
                     />
                 </FormRow>
                 <FormRow 
-                    error={errors.useVerification} 
+                    error={errors.sendNotification} 
                     horizontal={horizontal}
                 >
                     <FieldSelect
-                        name="useVerification"
+                        name="sendNotification"
                         required={true}
                         inputClass="form__input_size-sm"
-                        label="Запросить подтверждение"
-                        labelTitle="Запросить подтверждение Email"
-                        value={fields.useVerification}
+                        label="Уведомить пользователя"
+                        labelTitle="Уведомить пользователя через Email"
+                        value={fields.sendNotification}
                         horizontal={horizontal}
                         onChange={onChangeSelect}
                         onBlur={onBlur}

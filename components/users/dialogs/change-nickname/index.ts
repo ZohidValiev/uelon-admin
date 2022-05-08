@@ -1,3 +1,3 @@
 
 export { default as ChangeNicknameDialog } from "./ChangeNicknameDialog"
-export { default as _changeNicknameDialog } from "./api"
+export { api as _changeNicknameDialog } from "./store"

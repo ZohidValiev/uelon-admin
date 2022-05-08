@@ -64,8 +64,34 @@ export namespace DTO {
         role: Roles
         status: Status
         password: string
-        useVerification: boolean
-    }    
+        sendNotification: boolean
+    }
+}
+
+export function setUserRole(user: Entity.User, role: Roles): void {
+    if (role === Roles.ROLE_USER) {
+        user.roles = [role]
+        return
+    }
+
+    if (role === Roles.ROLE_MODERATOR) {
+        user.roles = [
+            Roles.ROLE_USER,
+            role,
+        ]
+        return
+    }
+    
+    if (role === Roles.ROLE_ADMIN) {
+        user.roles = [
+            Roles.ROLE_USER,
+            Roles.ROLE_MODERATOR,
+            role,
+        ]
+        return
+    }
+
+    throw new Error(`Role ${role} has not been found.`)
 }
 
 export function canUserLogin(user: Auth.User): boolean {

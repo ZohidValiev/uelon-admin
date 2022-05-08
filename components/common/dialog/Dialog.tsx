@@ -7,6 +7,8 @@ interface Props {
     title: string
     type?: string
     loading?: boolean
+    className?: string
+    contentClassName?: string
     buttons: ButtonProps[]
 }
 
@@ -14,21 +16,34 @@ interface ButtonProps /*extends ButtonHTMLAttributes<HTMLButtonElement>*/ {
     [key: string]: any
 }
 
-const Dialog: FC<Props> = ({ title, type = "", children, loading = false, buttons = [] }) => {
+const Dialog: FC<Props> = ({ 
+    title, type = "", children, loading=false, className="", contentClassName="", buttons = [] 
+}) => {
 
     const dialogClass = getDialogTypeClass(type)
     const dialogTitleClass = getDialogTitleTypeClass(type)
     const dialogButtonsClass = getDialogButtonsTypeClass(type)
     const dialogButtonClass = getDialogButtonTypeClass(type)
 
+    const classes = [
+        styles.dialog,
+        dialogClass,
+        className,
+    ]
+
     const classesTitle = [
         styles.dialog__title, 
         dialogTitleClass,
     ]
 
+    const classesContent = [
+        styles.dialog__content,
+        contentClassName,
+    ]
+
     return (
         <div className={styles.dialogOverlay}>
-            <div className={styles.dialog + ` ${dialogClass}`}>
+            <div className={classes.join(" ")}>
                 { title && (
                     <div className={classesTitle.join(" ")}>
                         <span className={styles.dialog__titleText}>
@@ -38,7 +53,7 @@ const Dialog: FC<Props> = ({ title, type = "", children, loading = false, button
                     </div>
                 )}
                 <div className={styles.dialog__body}>
-                    <div className={styles.dialog__content}>
+                    <div className={classesContent.join(" ")}>
                         {children}
                     </div>
                     { buttons.length > 0 && 

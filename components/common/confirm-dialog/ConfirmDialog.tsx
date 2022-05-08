@@ -4,6 +4,7 @@ import { observer } from "mobx-react"
 import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/common/dialog"
 import store from "@/stores/ConfirmDialogStore"
+import styles from "@/styles/Dialog.module.css"
 
 const ConfirmDialog: FC = () => {
 
@@ -28,7 +29,12 @@ const ConfirmDialog: FC = () => {
 
     return (
         <Portal>
-            <Dialog title="Подтвердите" buttons={buttons}>
+            <Dialog 
+                title="Подтвердите" 
+                className={styles.dialog_confirm}
+                contentClassName={styles.dialog__content_center}
+                buttons={buttons}
+            >
                 {store.content}
             </Dialog>
         </Portal>

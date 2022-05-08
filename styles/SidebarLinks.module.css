@@ -1,0 +1,26 @@
+
+.sidebarLinks {
+    display: flex;
+    flex-flow: column;
+    font-size: 1.4rem;
+    font-weight: 500;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sidebarLinks__item:not(:last-child) {
+    margin-bottom: .2rem;
+}
+.sidebarLinks__link {
+    display: inline-block;
+    background-color: #176ab8;
+    padding: 0.8rem 1.4rem 0.9rem;
+    color: #ffffff;
+    transition: all;
+    cursor: pointer;
+    width: 100%;
+}
+.sidebarLinks__link:hover {
+    background-color: #ffc107;
+    color: #000000;
+}

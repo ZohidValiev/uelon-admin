@@ -9,8 +9,7 @@ import { _confirm } from "@/components/common/confirm-dialog"
 import { _info } from "@/components/common/info-dialog"
 import { _changePositionDialog } from "@/components/categories/dialogs/change-position"
 import { _categoryCUDialog } from "@/components/categories/dialogs/cu-dialog"
-import { useEventManager } from "@/utils/event-manager"
-import { CategoryEvent, createEventAlias } from "@/events"
+import events from "@/events-bus"
 
 
 interface Props {
@@ -22,17 +21,11 @@ interface Props {
 const TableContainer: FC<Props> = ({ categories, mutate, isLoading }) => {
     const MESSAGE_UPDATE = "Ждите, идет обновление категорий..."
 
-    const em = useEventManager()
     useEffect(() => {
-        const EVENT_CATEGORY_CREATED__TABLE = createEventAlias(CategoryEvent.CATEGORY_CREATED, "table")
-        em.on(EVENT_CATEGORY_CREATED__TABLE, (category) => {
-            mutate([...categories, category])
+        return events.categoryCreated.subscribe((id) => {
+            mutate()
         })
-
-        return () => {
-            em.off(EVENT_CATEGORY_CREATED__TABLE)
-        }
-    }, [categories])
+    }, [mutate])
 
     const handlePositionUp = useCallback((category) => {
         _changePositionDialog.openUp(
@@ -41,7 +34,7 @@ const TableContainer: FC<Props> = ({ categories, mutate, isLoading }) => {
                 categoriesLength: categories.length 
             }, 
             {
-                async onOK(category) {
+                async onOK(id) {
                     _message.open(MESSAGE_UPDATE)
                     try {
                         await mutate()
@@ -60,7 +53,7 @@ const TableContainer: FC<Props> = ({ categories, mutate, isLoading }) => {
                 categoriesLength: categories.length,
             },
             {
-                async onOK(category) {
+                async onOK(id) {
                     _message.open(MESSAGE_UPDATE)
                     try {
                         await mutate()
@@ -74,12 +67,11 @@ const TableContainer: FC<Props> = ({ categories, mutate, isLoading }) => {
 
     const handleUpdate = useCallback((category) => {
         _categoryCUDialog.openUpdate(category, {
-            onOK(category) {
-                mutate(() => {
-                    return categories.map((_category) => {
-                        return _category.id === category.id ? category : _category
-                    })
-                })
+            async onOK(id) {
+                const category = await api.loadCategory(id)
+                mutate(categories.map((_category) => {
+                    return _category.id === category.id ? category : _category
+                }), false)
             }
         })
     }, [categories])

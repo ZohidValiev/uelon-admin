@@ -9,6 +9,7 @@ import { _changeRoleDialog } from "@/components/users/dialogs/change-role"
 import { _changeStatusDialog } from "@/components/users/dialogs/change-status"
 import { _info } from "@/components/common/info-dialog"
 import { _infoLoader } from "@/components/common/loaders/info-loader"
+import * as users from "@/types/users"
 
 
 interface Props {}
@@ -27,7 +28,8 @@ const UserViewContainer: FC<Props> = () => {
 
     const handleClickNickname = useCallback(() => {
         _changeNicknameDialog.open(user, {
-            onOK(user) {
+            onOK(id, nickname) {
+                user.nickname = nickname
                 mutate(user, false)
             },
             onError(error) {
@@ -38,7 +40,8 @@ const UserViewContainer: FC<Props> = () => {
 
     const handleClickRole = useCallback(() => {
         _changeRoleDialog.open(user, {
-            onOK(user) {
+            onOK(id, role) {
+                users.setUserRole(user, role)
                 mutate(user, false)
             },
             onError(error) {
@@ -49,7 +52,8 @@ const UserViewContainer: FC<Props> = () => {
 
     const handleClickStatus = useCallback(() => {
         _changeStatusDialog.open(user, {
-            onOK(user) {
+            onOK(id, status) {
+                user.status = status
                 mutate(user, false)
             },
             onError(error) {

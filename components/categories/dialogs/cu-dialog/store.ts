@@ -1,6 +1,5 @@
 
-import CUDialogStore from "@/stores/categories/CUDialogStore"
-import { API, Store } from "@/types/categories/cu-dialog"
+import CUDialogStore, { Store, API } from "@/stores/categories/CUDialogStore"
 
 
 const store = new CUDialogStore()

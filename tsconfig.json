@@ -11,6 +11,7 @@
       "@/types/*": ["types/*"],
       "@/stores/*": ["stores/*"],
       "@/events": ["events/index.ts"],
+      "@/events-bus": ["utils/events-bus/index.ts"],
     },
     "target": "es5",
     "lib": [

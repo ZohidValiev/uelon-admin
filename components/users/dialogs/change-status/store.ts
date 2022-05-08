@@ -1,9 +1,8 @@
 
 import UpdateDialogStore, { API, Store } from "@/stores/UpdateDialogStore"
-// import { API, Store } from "@/types/update-dialog"
-import { Entity } from "@/types/users"
+import { Entity, Status } from "@/types/users"
 
 
-const store = new UpdateDialogStore<Entity.User>()
-export default store as Store<Entity.User>
-export const api: API<Entity.User> = store
+const store = new UpdateDialogStore<Entity.User, Status>()
+export default store as Store<Entity.User, Status>
+export const api: API<Entity.User, Status> = store

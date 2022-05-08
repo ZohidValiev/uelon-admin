@@ -14,6 +14,7 @@ import { _message } from "@/components/common/message"
 import { Entity } from "@/types/users"
 import { UserActionsContext, Value } from "./context"
 import { useRouter } from "next/router"
+import eventsBus from "@/events-bus"
 
 interface State {
     prevPage: number
@@ -22,7 +23,7 @@ interface State {
 
 const TableContainer: FC = () => {
 
-    const ITEMS_COUNT = 5//20
+    const ITEMS_COUNT = 20
 
     const [state, setState] = useState<State>(() => ({
         prevPage: 1,
@@ -51,17 +52,17 @@ const TableContainer: FC = () => {
     }, [router])
 
     const handleRemove = useCallback(async (user: Entity.User) => {
-        _confirm.open(`Вы действительно хотите удалить пользователя? `, {
+        _confirm.open(`Вы действительно хотите удалить пользователя ${user.email}? `, {
             async onOK() {
-                _message.open("Ждите, идет удаление пользователя.")
+                _message.open(`Ждите, идет удаление пользователя ${user.email}.`)
                 try {
-                    await api.remove(user.id)   
+                    await api.remove(user.id)
                 } catch (error) {
                     _info.openError("Ошибка", "Во время выполнения действия произошла ошибка.")
                     return
                 } finally {
                     _message.close()
-                }   
+                }
 
                 _message.open("Ждите, идет обновление пользователей")
                 try {
@@ -79,20 +80,14 @@ const TableContainer: FC = () => {
     }))
 
 
-    const em = useEventManager()
     useEffect(() => {
-        const EVENT_USER_CREATED__TABLE = createEventAlias(UserEvent.USER_CREATED, "table")
-        
-        em.on(EVENT_USER_CREATED__TABLE, (user) => {
-            _info.openInfo("Уведомление", `Пользователь "${user.nickname}" успешно добавлен.`)
-
-            if (state.page == 1) {
-                mutate()
-            }
+        const unsubscribe = eventsBus.userCreated.subscribe((id) => {
+            _info.openInfo("Уведомление", "Пользователь успешно добавлен.")
+            mutate()
         })
 
         return () => {
-            em.off(EVENT_USER_CREATED__TABLE)
+            unsubscribe()
         }
     }, [state, mutate])
 

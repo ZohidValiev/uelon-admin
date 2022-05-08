@@ -1,3 +1,3 @@
 
 export { default as CategoryCUDialog } from "./CategoryCUDialog"
-export { default as _categoryCUDialog } from "./api"
+export { api as _categoryCUDialog } from "./store"

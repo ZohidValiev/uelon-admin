@@ -13,7 +13,7 @@ const PageLoader: FC<Props> = ({ /*size=48,*/ status="загрузка" }) => {
         <div className={styles.pageLoader}>
             <div className={styles.pageLoader__content}>
                 <div className={styles.pageLoader__loader}>
-                    <Loader size={48}/>
+                    <Loader size={32}/>
                 </div>
                 <span className={styles.pageLoader__status}>
                     {status}

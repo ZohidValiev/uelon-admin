@@ -1,19 +1,16 @@
 
 import { FC, useCallback } from "react"
-import { useEventManager } from "@/utils/event-manager"
 import { ToolBar, AddToolButton } from "@/components/common/tool"
 import { _categoryCUDialog } from "@/components/categories/dialogs/cu-dialog"
-import { CategoryEvent } from "@/events"
+import events from "@/events-bus"
 
 
 const CategoryToolBar: FC = () => {
 
-    const em = useEventManager()
-
     const handleClickAdd = useCallback(() => {
         _categoryCUDialog.openCreate({
-            onOK(category) {
-                em.trigger(CategoryEvent.CATEGORY_CREATED, category)
+            onOK(id) {
+                events.categoryCreated.broadcast(id)
             },
             onError(error) {
 

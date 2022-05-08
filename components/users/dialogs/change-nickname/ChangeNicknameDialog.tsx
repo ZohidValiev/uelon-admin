@@ -12,7 +12,12 @@ const ChangeNicknameDialog = observer(() => {
     
     const handleSubmit = useCallback(async (nickname: string) => {
         store.send(async (user) => {
-            return api.updateUserNickname(user.id, nickname)
+            let id = await api.updateUserNickname(user.id, nickname)
+            
+            return {
+                id,
+                data: nickname,
+            }
         })
     }, [])
 

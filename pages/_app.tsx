@@ -36,33 +36,31 @@ function MyApp({ Component, pageProps: { session, ...pageProps }}: Props) {
   }
 
   return (
-    <>
-        <SessionProvider session={session}>
-          <SWRConfig>
-            { auth ? (
-              <Auth auth={auth}>
-                <Component {...pageProps} />
-              </Auth>
-            ) : (
-              <Component {...pageProps} />
-            ) }
-            <ConfirmDialog />
-            <Message />
-            <InfoDialog />
-            <InfoLoader />
-          </SWRConfig>
-        </SessionProvider>
-    </>
+    <SWRConfig>
+      <SessionProvider session={session}>
+        {auth ? (
+          <Auth auth={auth}>
+            <Component {...pageProps} />
+          </Auth>
+        ) : (
+          <Component {...pageProps} />
+        )}
+        <ConfirmDialog />
+        <Message />
+        <InfoDialog />
+        <InfoLoader />
+      </SessionProvider>
+    </SWRConfig>
   )
 }
 
 export default MyApp
 
 type AuthProps = {
-  auth: AuthType
+  auth: AuthType,
 }
 
-const Auth: FC<AuthProps> = ({ auth, children }) => {
+const Auth:FC<AuthProps> = ({ auth, children }) => {
   
   const router = useRouter()
   const [accessGranted, setAccessGranted] = useState(false)

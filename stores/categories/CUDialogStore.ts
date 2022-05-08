@@ -1,7 +1,6 @@
 
 import { axiosHttpCode422Thrower } from "@/api/axios";
 import { Entity } from "@/types/categories";
-// import { API, Callbacks, Endpoint, Store } from "@/types/categories/cu-dialog";
 import { action, makeObservable, observable, runInAction } from "mobx";
 
 export interface Store {
@@ -14,7 +13,7 @@ export interface Store {
 }
 
 export interface Callbacks {
-    onOK(category: Entity.Category): void
+    onOK(id: number): void
     onError?(error: any): void
 }
 
@@ -25,7 +24,7 @@ export interface API {
 }
 
 export interface Endpoint {
-    (category: Entity.Category | null): Promise<Entity.Category>
+    (category: Entity.Category | null): Promise<number>
 }
 
 class CUDialogStore implements Store, API {
@@ -59,8 +58,8 @@ class CUDialogStore implements Store, API {
         })
 
         try {
-            const category = await endpoint(this.category)
-            this._onOK(category)
+            const id = await endpoint(this.category)
+            this._onOK(id)
         } catch (error) {
             axiosHttpCode422Thrower(error, (error) => {
                 this._onError(error)
@@ -94,9 +93,9 @@ class CUDialogStore implements Store, API {
         this.callbacks = null
     }
 
-    private _onOK(category: Entity.Category) {
+    private _onOK(id: number) {
         if (this.callbacks) {
-            this.callbacks.onOK(category)
+            this.callbacks.onOK(id)
         }
     }
     

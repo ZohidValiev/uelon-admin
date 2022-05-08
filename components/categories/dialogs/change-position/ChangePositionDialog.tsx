@@ -1,6 +1,6 @@
 
 import { FC, useCallback } from 'react'
-import { observer, useLocalObservable } from "mobx-react"
+import { observer } from "mobx-react"
 import { Portal } from "@/components/hoc"
 import { Dialog } from "@/components/common/dialog"
 import { FormContainer } from "@/components/categories/forms/change-position"

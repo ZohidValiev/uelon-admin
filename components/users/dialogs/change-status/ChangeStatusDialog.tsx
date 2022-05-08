@@ -13,7 +13,12 @@ const ChangeStatusDialog: FC = () => {
     
     const handleSubmit = useCallback(async (status: Status) => {
         store.send(async (user) => {
-            return api.updateUserStatus(user.id, status)
+            const id = await api.updateUserStatus(user.id, status)
+
+            return {
+                id,
+                data: status,
+            }
         })
     }, [])
 

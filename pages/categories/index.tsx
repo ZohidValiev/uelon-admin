@@ -11,25 +11,24 @@ import { useEffect } from "react"
 import { CategoryToolBar } from "@/components/categories/tool-bar"
 import { AuthNextPage } from "@/types/pages"
 import { Roles } from "@/types/users"
-import { TableSpinner } from "@/components/common/spinners/table"
 import { _infoLoader } from "@/components/common/loaders/info-loader"
 
 
 const CategoriesPage: AuthNextPage = () => {
 
-    const { data:categories, isLoading, error, mutate } = useCategoriesLevel1({
+    const { data:categories, isLoading, isValidating, error, mutate } = useCategoriesLevel1({
         onSuccess:() => {
             _message.close()
         }
     })
 
     useEffect(() => {
-        if (isLoading) {
+        if (isLoading || isValidating) {
             _infoLoader.open()
         } else {
             _infoLoader.close()
         }
-    }, [isLoading])
+    }, [isLoading, isValidating])
 
     return (
         <Page title="Категории">

@@ -1,7 +1,6 @@
 
 import { action, makeObservable, observable, runInAction } from "mobx"
 import { axiosHttpCode422Thrower } from "@/api/axios";
-// import { Store, API, Callbacks, Endpoint } from "@/types/create-dialog"
 import { enableStaticRendering } from "mobx-react";
 
 enableStaticRendering(typeof window === "undefined")
@@ -14,7 +13,7 @@ export interface Store<E> {
 }
 
 export interface Callbacks<E> {
-    onOK: (entity: E) => void
+    onOK: (idOrEntity: E) => void
     onError?: (error: any) => void
 }
 
@@ -61,8 +60,8 @@ class CreateDialogStore<E> implements Store<E>, API<E> {
         })
 
         try {
-            const entity = await endpoint()    
-            this._onOK(entity)
+            const idOrEntity = await endpoint()    
+            this._onOK(idOrEntity)
         } catch (error) {
             axiosHttpCode422Thrower(error, (error) => {
                 this._onError(error)

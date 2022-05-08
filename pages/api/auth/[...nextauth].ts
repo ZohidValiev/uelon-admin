@@ -1,5 +1,5 @@
 
-import NextAuth, { Awaitable } from "next-auth"
+import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import * as api from "@/api/auth"
 import { canUserLogin, Auth } from "@/types/users"

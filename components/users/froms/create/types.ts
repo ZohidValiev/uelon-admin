@@ -4,11 +4,11 @@ import * as users from "@/types/users"
 export interface Fields {
     email: string
     nickname: string
-    role: users.Roles | null
-    status: users.Status | null
+    role: users.Roles|null
+    status: users.Status|null
     password: string
     passwordRepeat: string
-    useVerification: 0 | 1
+    sendNotification: 0 | 1
 }
 
 export interface Errors {
@@ -18,5 +18,5 @@ export interface Errors {
     status: string
     password: string
     passwordRepeat: string
-    useVerification: string
+    sendNotification: string
 }

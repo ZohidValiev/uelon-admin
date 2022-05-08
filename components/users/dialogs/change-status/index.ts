@@ -1,3 +1,3 @@
 
 export { default as ChangeStatusDialog } from "./ChangeStatusDialog"
-export { default as _changeStatusDialog } from "./api"
+export { api as _changeStatusDialog } from "./store"

@@ -1,23 +1,24 @@
 
 import { DTO, Entity } from "@/types/categories"
 import { instance, patch } from "./axios"
+import { IdDto } from "@/types/common"
 
-export async function create(data: DTO.Create): Promise<Entity.Category> {
-    return (await (instance.post<Entity.Category>('/categories', data))).data
+export async function create(data: DTO.Create): Promise<number> {
+    return (await (instance.post<IdDto>('/categories', data))).data.id
 }
 
-export async function update(id: number, data: DTO.Update): Promise<Entity.Category> {
-    return (await patch<Entity.Category>(`/categories/${id}`, data)).data
+export async function update(id: number, data: DTO.Update): Promise<number> {
+    return (await patch<IdDto>(`/categories/${id}`, data)).data.id
 }
 
 export async function remove(id: number): Promise<void> {
-    return (await (instance.delete<void>(`/categories/${id}`))).data
+    await (instance.delete<void>(`/categories/${id}`))
 }
 
-export async function changePosition(id: number, position: number): Promise<Entity.Category> {
-    return (await (patch<Entity.Category>(`/categories/${id}/position`, { 
+export async function changePosition(id: number, position: number): Promise<number> {
+    return (await (patch<IdDto>(`/categories/${id}/position`, { 
         position 
-    }))).data
+    }))).data.id
 }
 
 export async function loadCategoryByPath(path: string): Promise<Entity.Category> {

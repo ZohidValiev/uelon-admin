@@ -28,7 +28,7 @@ class FormContainer extends Component<Props, State> {
             status: null,
             password: "",
             passwordRepeat: "",
-            useVerification: 0,
+            sendNotification: 0,
         },
         errors: {
             email: "",
@@ -37,7 +37,7 @@ class FormContainer extends Component<Props, State> {
             status: "",
             password: "",
             passwordRepeat: "",
-            useVerification: "",
+            sendNotification: "",
         }
     }
 
@@ -64,8 +64,8 @@ class FormContainer extends Component<Props, State> {
                     passwordRepeat: () => {
                         return this.state.fields.passwordRepeat
                     },
-                    useVerification: () => {
-                        return this.state.fields.useVerification
+                    sendNotification: () => {
+                        return this.state.fields.sendNotification
                     },
                 })
                 .setRules({
@@ -100,12 +100,7 @@ class FormContainer extends Component<Props, State> {
                             message: "Выберите значение",
                         },
                         range: {
-                            range: [
-                                0, //deleted
-                                1, //inactive
-                                2, //active
-                                3, //blocked
-                            ],
+                            range: users.STATUSES_ARRAY,
                             message: "Выберите правильное значение",
                         }
                     },
@@ -130,7 +125,7 @@ class FormContainer extends Component<Props, State> {
                             message: "Пароли не совпадают",
                         }
                     },
-                    useVerification: {
+                    sendNotification: {
                         notEmpty: {
                             message: "Выберите значение",
                         },
@@ -140,7 +135,6 @@ class FormContainer extends Component<Props, State> {
                         }
                     }
                 })
-                console.log("mounted ", this.validator)
         }
 
         return this.validator
@@ -151,11 +145,16 @@ class FormContainer extends Component<Props, State> {
         console.log("unmounted ", this.validator)
     }
 
-    handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (e) => {
+    handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = ({ target: { name, value } }) => {
+        let _value: string|number = value
+        if (name === 'status') {
+            _value = parseInt(value)
+        }
+
         this.setState((prevState) => ({
             fields: {
                 ...prevState.fields,
-                [e.target.name]: e.target.value,
+                [name]: _value,
             }
         }))
     }
@@ -192,7 +191,7 @@ class FormContainer extends Component<Props, State> {
             password: fields.password,
             role: fields.role,
             status: fields.status,
-            useVerification: fields.useVerification === 1
+            sendNotification: fields.sendNotification === 1
         })
     }
 
