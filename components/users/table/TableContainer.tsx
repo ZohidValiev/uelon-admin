@@ -1,8 +1,6 @@
 
 import { useState, useCallback, useEffect, FC } from "react"
-import { UserEvent, createEventAlias } from "@/events"
 import { useUsers } from "@/hooks/users"
-import { useEventManager } from "@/utils/event-manager"
 import { _info } from "@/components/common/info-dialog"
 import { _infoLoader } from "@/components/common/loaders/info-loader"
 import Table from "./Table"
@@ -81,14 +79,10 @@ const TableContainer: FC = () => {
 
 
     useEffect(() => {
-        const unsubscribe = eventsBus.userCreated.subscribe((id) => {
+        return eventsBus.userCreated.subscribe((id) => {
             _info.openInfo("Уведомление", "Пользователь успешно добавлен.")
             mutate()
         })
-
-        return () => {
-            unsubscribe()
-        }
     }, [state, mutate])
 
     useEffect(() => {
